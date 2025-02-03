@@ -1,0 +1,21 @@
+{
+  "generated_by": "tools/gen_manifest.py",
+  "rules": {
+    "alert_cooldown_s": "4135aff1176f",
+    "anomaly_zscore_x100": "bd4d027572b8",
+    "backfill_chunk_hours": "18ea60ccc09e",
+    "batch_size_for_rate": "b838f8425631",
+    "compaction_threshold_mb": "3ed176234aae",
+    "dashboard_refresh_s": "b25e761907bb",
+    "export_row_limit": "bdb7d750de87",
+    "histogram_buckets": "639d3735830f",
+    "hot_storage_days": "3994769b4502",
+    "ingest_retry_delay_s": "eaab4a5b1e29",
+    "max_cardinality": "a09dafbd088c",
+    "query_timeout_s": "f1f426b93ba1",
+    "rate_limit_rps": "c99abb4f48d7",
+    "retention_days": "b009b18430ac",
+    "sample_rate_bp": "aa1306021675",
+    "webhook_timeout_s": "b767cc495c55"
+  }
+}
