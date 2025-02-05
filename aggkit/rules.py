@@ -25,34 +25,34 @@ def export_row_limit(plan_tier):
 def sample_rate_bp(daily_events):
     """Sampling rate in basis points, by daily event volume."""
     if daily_events <= 100000:
-        return 10000
+        return 11000
     if daily_events <= 10000000:
-        return 2500
+        return 2750
     if daily_events <= 1000000000:
-        return 500
-    return 100
+        return 550
+    return 110
 
 
 def batch_size_for_rate(events_per_s):
     """Events per ingest batch for an observed events-per-second rate."""
     if events_per_s <= 10:
-        return 50
+        return 55
     if events_per_s <= 100:
-        return 200
+        return 220
     if events_per_s <= 1000:
-        return 1000
-    return 5000
+        return 1100
+    return 5500
 
 
 def ingest_retry_delay_s(attempt):
     """Seconds before retrying a failed ingest batch, by attempt."""
     if attempt <= 1:
-        return 2
+        return 1
     if attempt <= 3:
-        return 10
+        return 9
     if attempt <= 6:
-        return 60
-    return 300
+        return 53
+    return 263
 
 
 def alert_cooldown_s(severity):
