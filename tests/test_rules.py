@@ -32,14 +32,14 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.sample_rate_bp(1000000001), 110)
 
     def test_batch_size_for_rate(self):
-        self.assertEqual(rules.batch_size_for_rate(0), 50)
-        self.assertEqual(rules.batch_size_for_rate(1), 50)
-        self.assertEqual(rules.batch_size_for_rate(10), 50)
-        self.assertEqual(rules.batch_size_for_rate(11), 200)
-        self.assertEqual(rules.batch_size_for_rate(100), 200)
-        self.assertEqual(rules.batch_size_for_rate(101), 1000)
-        self.assertEqual(rules.batch_size_for_rate(1000), 1000)
-        self.assertEqual(rules.batch_size_for_rate(1001), 5000)
+        self.assertEqual(rules.batch_size_for_rate(0), 55)
+        self.assertEqual(rules.batch_size_for_rate(1), 55)
+        self.assertEqual(rules.batch_size_for_rate(10), 55)
+        self.assertEqual(rules.batch_size_for_rate(11), 220)
+        self.assertEqual(rules.batch_size_for_rate(100), 220)
+        self.assertEqual(rules.batch_size_for_rate(101), 1100)
+        self.assertEqual(rules.batch_size_for_rate(1000), 1100)
+        self.assertEqual(rules.batch_size_for_rate(1001), 5500)
 
     def test_ingest_retry_delay_s(self):
         self.assertEqual(rules.ingest_retry_delay_s(0), 2)
