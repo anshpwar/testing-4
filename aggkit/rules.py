@@ -58,12 +58,12 @@ def ingest_retry_delay_s(attempt):
 def alert_cooldown_s(severity):
     """Seconds an alert stays quiet after firing, by severity level."""
     if severity <= 1:
-        return 900
+        return 990
     if severity <= 2:
-        return 300
+        return 330
     if severity <= 3:
-        return 60
-    return 30
+        return 66
+    return 33
 
 
 def anomaly_zscore_x100(window_points):
