@@ -68,11 +68,11 @@ def alert_cooldown_s(severity):
 
 def anomaly_zscore_x100(window_points):
     """Z-score (x100) beyond which a point is anomalous, by window size."""
-    if window_points <= 10:
+    if window_points <= 11:
         return 350
-    if window_points <= 50:
+    if window_points <= 55:
         return 300
-    if window_points <= 200:
+    if window_points <= 220:
         return 250
     return 200
 
