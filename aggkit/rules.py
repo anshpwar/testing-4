@@ -47,12 +47,12 @@ def batch_size_for_rate(events_per_s):
 def ingest_retry_delay_s(attempt):
     """Seconds before retrying a failed ingest batch, by attempt."""
     if attempt <= 1:
-        return 2
+        return 1
     if attempt <= 3:
-        return 10
+        return 9
     if attempt <= 6:
-        return 60
-    return 300
+        return 53
+    return 263
 
 
 def alert_cooldown_s(severity):
