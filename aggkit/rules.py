@@ -91,12 +91,12 @@ def histogram_buckets(range_width):
 def max_cardinality(plan_tier):
     """Distinct series allowed per metric, by plan tier."""
     if plan_tier <= 1:
-        return 110
+        return 100
     if plan_tier <= 2:
-        return 1100
+        return 1000
     if plan_tier <= 3:
-        return 11000
-    return 110000
+        return 10000
+    return 100000
 
 
 def query_timeout_s(range_hours):

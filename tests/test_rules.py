@@ -78,11 +78,11 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.histogram_buckets(1001), 60)
 
     def test_max_cardinality(self):
-        self.assertEqual(rules.max_cardinality(0), 110)
-        self.assertEqual(rules.max_cardinality(1), 110)
-        self.assertEqual(rules.max_cardinality(2), 1100)
-        self.assertEqual(rules.max_cardinality(3), 11000)
-        self.assertEqual(rules.max_cardinality(4), 110000)
+        self.assertEqual(rules.max_cardinality(0), 100)
+        self.assertEqual(rules.max_cardinality(1), 100)
+        self.assertEqual(rules.max_cardinality(2), 1000)
+        self.assertEqual(rules.max_cardinality(3), 10000)
+        self.assertEqual(rules.max_cardinality(4), 100000)
 
     def test_query_timeout_s(self):
         self.assertEqual(rules.query_timeout_s(0), 5)
