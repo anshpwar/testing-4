@@ -1,0 +1,19 @@
+{
+  "env": "prod",
+  "finished_at": "2025-02-10T00:46:00+0000",
+  "kind": "deployment",
+  "patch_id": "f96e9afb9c55c97bee9f8119d691d60d003a0f78",
+  "run_id": "dep-r04-0007",
+  "schema_version": 1,
+  "services": [
+    "ingest-gateway",
+    "rollup-worker"
+  ],
+  "source": "fixture-deployer",
+  "started_at": "2025-02-10T00:40:00+0000",
+  "status": "SUCCEEDED",
+  "subject_commit": "ed9c10b684e9ec9924b9ba56a94897c058a83771",
+  "suite": "n/a",
+  "suite_digest": "9139bd60ef3fc1beb8c2946f42188594c31af623",
+  "synthetic": true
+}
