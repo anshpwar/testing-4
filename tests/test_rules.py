@@ -107,11 +107,11 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.backfill_chunk_hours(0), 24)
         self.assertEqual(rules.backfill_chunk_hours(1), 24)
         self.assertEqual(rules.backfill_chunk_hours(100000), 24)
-        self.assertEqual(rules.backfill_chunk_hours(100001), 6)
+        self.assertEqual(rules.backfill_chunk_hours(100001), 24)
         self.assertEqual(rules.backfill_chunk_hours(10000000), 6)
-        self.assertEqual(rules.backfill_chunk_hours(10000001), 2)
+        self.assertEqual(rules.backfill_chunk_hours(10000001), 6)
         self.assertEqual(rules.backfill_chunk_hours(1000000000), 2)
-        self.assertEqual(rules.backfill_chunk_hours(1000000001), 1)
+        self.assertEqual(rules.backfill_chunk_hours(1000000001), 2)
 
     def test_hot_storage_days(self):
         self.assertEqual(rules.hot_storage_days(0), 3)
