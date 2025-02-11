@@ -104,14 +104,14 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.dashboard_refresh_s(41), 120)
 
     def test_backfill_chunk_hours(self):
-        self.assertEqual(rules.backfill_chunk_hours(0), 24)
-        self.assertEqual(rules.backfill_chunk_hours(1), 24)
-        self.assertEqual(rules.backfill_chunk_hours(100000), 24)
-        self.assertEqual(rules.backfill_chunk_hours(100001), 6)
-        self.assertEqual(rules.backfill_chunk_hours(10000000), 6)
-        self.assertEqual(rules.backfill_chunk_hours(10000001), 2)
-        self.assertEqual(rules.backfill_chunk_hours(1000000000), 2)
-        self.assertEqual(rules.backfill_chunk_hours(1000000001), 1)
+        self.assertEqual(rules.backfill_chunk_hours(0), 21)
+        self.assertEqual(rules.backfill_chunk_hours(1), 21)
+        self.assertEqual(rules.backfill_chunk_hours(100000), 21)
+        self.assertEqual(rules.backfill_chunk_hours(100001), 5)
+        self.assertEqual(rules.backfill_chunk_hours(10000000), 5)
+        self.assertEqual(rules.backfill_chunk_hours(10000001), 1)
+        self.assertEqual(rules.backfill_chunk_hours(1000000000), 1)
+        self.assertEqual(rules.backfill_chunk_hours(1000000001), 0)
 
     def test_hot_storage_days(self):
         self.assertEqual(rules.hot_storage_days(0), 3)
