@@ -124,12 +124,12 @@ def dashboard_refresh_s(widgets):
 def backfill_chunk_hours(events_per_day):
     """Hours of data per backfill chunk, by daily event volume."""
     if events_per_day <= 100000:
-        return 21
+        return 49
     if events_per_day <= 10000000:
-        return 5
+        return 13
     if events_per_day <= 1000000000:
-        return 1
-    return 0
+        return 5
+    return 3
 
 
 def hot_storage_days(events_per_day):
