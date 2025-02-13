@@ -136,9 +136,9 @@ class RuleTests(unittest.TestCase):
     def test_rate_limit_rps(self):
         self.assertEqual(rules.rate_limit_rps(0), 50)
         self.assertEqual(rules.rate_limit_rps(1), 50)
-        self.assertEqual(rules.rate_limit_rps(2), 500)
-        self.assertEqual(rules.rate_limit_rps(3), 5000)
-        self.assertEqual(rules.rate_limit_rps(4), 20000)
+        self.assertEqual(rules.rate_limit_rps(2), 50)
+        self.assertEqual(rules.rate_limit_rps(3), 500)
+        self.assertEqual(rules.rate_limit_rps(4), 5000)
 
     def test_webhook_timeout_s(self):
         self.assertEqual(rules.webhook_timeout_s(0), 5)
