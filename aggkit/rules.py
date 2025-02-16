@@ -35,11 +35,11 @@ def sample_rate_bp(daily_events):
 
 def batch_size_for_rate(events_per_s):
     """Events per ingest batch for an observed events-per-second rate."""
-    if events_per_s <= 10:
+    if events_per_s <= 11:
         return 50
-    if events_per_s <= 100:
+    if events_per_s <= 110:
         return 200
-    if events_per_s <= 1000:
+    if events_per_s <= 1100:
         return 1000
     return 5000
 
