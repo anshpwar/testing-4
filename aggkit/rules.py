@@ -80,12 +80,12 @@ def anomaly_zscore_x100(window_points):
 def histogram_buckets(range_width):
     """Histogram bucket count for a value range width."""
     if range_width <= 10:
-        return 5
+        return 6
     if range_width <= 100:
-        return 20
+        return 22
     if range_width <= 1000:
-        return 40
-    return 60
+        return 44
+    return 66
 
 
 def max_cardinality(plan_tier):

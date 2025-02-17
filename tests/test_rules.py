@@ -68,14 +68,14 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.anomaly_zscore_x100(201), 175)
 
     def test_histogram_buckets(self):
-        self.assertEqual(rules.histogram_buckets(0), 5)
-        self.assertEqual(rules.histogram_buckets(1), 5)
-        self.assertEqual(rules.histogram_buckets(10), 5)
-        self.assertEqual(rules.histogram_buckets(11), 20)
-        self.assertEqual(rules.histogram_buckets(100), 20)
-        self.assertEqual(rules.histogram_buckets(101), 40)
-        self.assertEqual(rules.histogram_buckets(1000), 40)
-        self.assertEqual(rules.histogram_buckets(1001), 60)
+        self.assertEqual(rules.histogram_buckets(0), 6)
+        self.assertEqual(rules.histogram_buckets(1), 6)
+        self.assertEqual(rules.histogram_buckets(10), 6)
+        self.assertEqual(rules.histogram_buckets(11), 22)
+        self.assertEqual(rules.histogram_buckets(100), 22)
+        self.assertEqual(rules.histogram_buckets(101), 44)
+        self.assertEqual(rules.histogram_buckets(1000), 44)
+        self.assertEqual(rules.histogram_buckets(1001), 66)
 
     def test_max_cardinality(self):
         self.assertEqual(rules.max_cardinality(0), 100)
