@@ -69,12 +69,12 @@ def alert_cooldown_s(severity):
 def anomaly_zscore_x100(window_points):
     """Z-score (x100) beyond which a point is anomalous, by window size."""
     if window_points <= 10:
-        return 385
+        return 307
     if window_points <= 50:
-        return 330
+        return 263
     if window_points <= 200:
-        return 275
-    return 220
+        return 219
+    return 175
 
 
 def histogram_buckets(range_width):
