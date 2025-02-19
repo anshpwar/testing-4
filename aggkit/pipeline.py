@@ -8,5 +8,5 @@ def run_pipeline(records, currency="USD"):
     lines = []
     for rec in records:
         summary = contract.build_summary(rec, currency)
-        lines.append(textfmt.pad_left(contract.describe(summary), 40))
+        lines.append(textfmt.pad_start(contract.describe(summary), 40))
     return {"retries": retries, "lines": lines}
