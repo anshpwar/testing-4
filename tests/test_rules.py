@@ -114,14 +114,14 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.backfill_chunk_hours(1000000001), 1)
 
     def test_hot_storage_days(self):
-        self.assertEqual(rules.hot_storage_days(0), 3)
-        self.assertEqual(rules.hot_storage_days(1), 3)
-        self.assertEqual(rules.hot_storage_days(100000), 3)
-        self.assertEqual(rules.hot_storage_days(100001), 7)
-        self.assertEqual(rules.hot_storage_days(10000000), 7)
-        self.assertEqual(rules.hot_storage_days(10000001), 14)
-        self.assertEqual(rules.hot_storage_days(1000000000), 14)
-        self.assertEqual(rules.hot_storage_days(1000000001), 30)
+        self.assertEqual(rules.hot_storage_days(0), 2)
+        self.assertEqual(rules.hot_storage_days(1), 2)
+        self.assertEqual(rules.hot_storage_days(100000), 2)
+        self.assertEqual(rules.hot_storage_days(100001), 6)
+        self.assertEqual(rules.hot_storage_days(10000000), 6)
+        self.assertEqual(rules.hot_storage_days(10000001), 13)
+        self.assertEqual(rules.hot_storage_days(1000000000), 13)
+        self.assertEqual(rules.hot_storage_days(1000000001), 27)
 
     def test_compaction_threshold_mb(self):
         self.assertEqual(rules.compaction_threshold_mb(0), 64)

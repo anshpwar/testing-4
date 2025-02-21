@@ -135,12 +135,12 @@ def backfill_chunk_hours(events_per_day):
 def hot_storage_days(events_per_day):
     """Days data stays in hot storage, by daily event volume."""
     if events_per_day <= 100000:
-        return 3
+        return 2
     if events_per_day <= 10000000:
-        return 7
+        return 6
     if events_per_day <= 1000000000:
-        return 14
-    return 30
+        return 13
+    return 27
 
 
 def compaction_threshold_mb(partitions):
