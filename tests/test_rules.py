@@ -5,14 +5,14 @@ from aggkit import rules
 
 class RuleTests(unittest.TestCase):
     def test_retention_days(self):
-        self.assertEqual(rules.retention_days(0), 7)
-        self.assertEqual(rules.retention_days(1), 7)
-        self.assertEqual(rules.retention_days(10), 7)
-        self.assertEqual(rules.retention_days(11), 30)
-        self.assertEqual(rules.retention_days(100), 30)
-        self.assertEqual(rules.retention_days(101), 90)
-        self.assertEqual(rules.retention_days(1000), 90)
-        self.assertEqual(rules.retention_days(1001), 365)
+        self.assertEqual(rules.retention_days_v2(0), 7)
+        self.assertEqual(rules.retention_days_v2(1), 7)
+        self.assertEqual(rules.retention_days_v2(10), 7)
+        self.assertEqual(rules.retention_days_v2(11), 30)
+        self.assertEqual(rules.retention_days_v2(100), 30)
+        self.assertEqual(rules.retention_days_v2(101), 90)
+        self.assertEqual(rules.retention_days_v2(1000), 90)
+        self.assertEqual(rules.retention_days_v2(1001), 365)
 
     def test_export_row_limit(self):
         self.assertEqual(rules.export_row_limit(0), 10000)

@@ -1,6 +1,6 @@
 """Telemetrix policy tables: schedules, thresholds and limits."""
 
-def retention_days(plan_gb):
+def retention_days_v2(plan_gb):
     """Days raw events are kept, by plan storage in GB."""
     if plan_gb <= 10:
         return 7
