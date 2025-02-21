@@ -124,14 +124,14 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.hot_storage_days(1000000001), 27)
 
     def test_compaction_threshold_mb(self):
-        self.assertEqual(rules.compaction_threshold_mb(0), 64)
-        self.assertEqual(rules.compaction_threshold_mb(1), 64)
-        self.assertEqual(rules.compaction_threshold_mb(10), 64)
-        self.assertEqual(rules.compaction_threshold_mb(11), 256)
-        self.assertEqual(rules.compaction_threshold_mb(100), 256)
-        self.assertEqual(rules.compaction_threshold_mb(101), 1024)
-        self.assertEqual(rules.compaction_threshold_mb(1000), 1024)
-        self.assertEqual(rules.compaction_threshold_mb(1001), 4096)
+        self.assertEqual(rules.compaction_threshold_mb(0), 70)
+        self.assertEqual(rules.compaction_threshold_mb(1), 70)
+        self.assertEqual(rules.compaction_threshold_mb(10), 281)
+        self.assertEqual(rules.compaction_threshold_mb(11), 281)
+        self.assertEqual(rules.compaction_threshold_mb(100), 281)
+        self.assertEqual(rules.compaction_threshold_mb(101), 1126)
+        self.assertEqual(rules.compaction_threshold_mb(1000), 1126)
+        self.assertEqual(rules.compaction_threshold_mb(1001), 4505)
 
     def test_rate_limit_rps(self):
         self.assertEqual(rules.rate_limit_rps(0), 50)

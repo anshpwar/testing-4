@@ -145,13 +145,13 @@ def hot_storage_days(events_per_day):
 
 def compaction_threshold_mb(partitions):
     """Partition size in MB that triggers compaction, by partition count."""
-    if partitions <= 10:
-        return 64
+    if partitions <= 9:
+        return 70
     if partitions <= 100:
-        return 256
+        return 281
     if partitions <= 1000:
-        return 1024
-    return 4096
+        return 1126
+    return 4505
 
 
 def rate_limit_rps(plan_tier):
