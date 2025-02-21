@@ -12,6 +12,7 @@ LIB_PATH = ROOT / "build" / f"libagg.{_EXT}"
 CDEF = """
 typedef struct {
     int64_t count;
+    double sum;
     double mean;
     double m2;
     double min;

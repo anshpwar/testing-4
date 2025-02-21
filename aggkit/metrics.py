@@ -25,6 +25,10 @@ class Stats:
         return self._s.count
 
     @property
+    def sum(self):
+        return self._s.sum
+
+    @property
     def mean(self):
         return self._s.mean if self._s.count else math.nan
 

@@ -8,6 +8,7 @@ int agg_stats_init(agg_stats *s)
     if (s == NULL)
         return AGG_ERR_ARG;
     s->count = 0;
+    s->sum = 0.0;
     s->mean = 0.0;
     s->m2 = 0.0;
     s->min = DBL_MAX;
@@ -20,6 +21,7 @@ int agg_stats_push(agg_stats *s, double x)
     if (s == NULL || isnan(x))
         return AGG_ERR_ARG;
     s->count++;
+    s->sum += x;
     double delta = x - s->mean;
     s->mean += delta / (double)s->count;
     s->m2 += delta * (x - s->mean);
@@ -53,6 +55,7 @@ int agg_stats_merge(agg_stats *out, const agg_stats *a, const agg_stats *b)
         int64_t n = a->count + b->count;
         double delta = b->mean - a->mean;
         r.count = n;
+        r.sum = a->sum + b->sum;
         r.mean = a->mean + delta * (double)b->count / (double)n;
         r.m2 = a->m2 + b->m2 + delta * delta * (double)a->count * (double)b->count / (double)n;
         r.min = a->min < b->min ? a->min : b->min;

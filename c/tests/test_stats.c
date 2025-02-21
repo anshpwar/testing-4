@@ -73,7 +73,7 @@ static void test_window_sum(void)
 static void test_layout(void)
 {
     CHECK_EQ(agg_sizeof_stats(), sizeof(agg_stats));
-    CHECK_EQ(sizeof(agg_stats), 40);
+    CHECK_EQ(sizeof(agg_stats), 48);
 }
 
 int main(void)

@@ -11,6 +11,7 @@ enum { AGG_OK = 0, AGG_ERR_ARG = -1, AGG_ERR_EMPTY = -2, AGG_ERR_RANGE = -3 };
 /* Streaming moments (Welford). Layout is mirrored by aggkit/native.py. */
 typedef struct {
     int64_t count;
+    double sum;
     double mean;
     double m2;
     double min;

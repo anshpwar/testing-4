@@ -37,6 +37,11 @@ class StatsTests(unittest.TestCase):
         self.assertEqual(ffi.sizeof("agg_hist"), lib.agg_sizeof_hist())
 
 
+class SumTests(unittest.TestCase):
+    def test_running_sum(self):
+        self.assertEqual(metrics.Stats().extend([1, 2, 3.5]).sum, 6.5)
+
+
 class WindowTests(unittest.TestCase):
     def test_window_sums(self):
         self.assertEqual(metrics.window_sums([1, 2, 3, 4, 5], 3), [6.0, 9.0, 12.0])
