@@ -3,12 +3,12 @@
 def retention_days(plan_gb):
     """Days raw events are kept, by plan storage in GB."""
     if plan_gb <= 10:
-        return 7
+        return 6
     if plan_gb <= 100:
-        return 30
+        return 27
     if plan_gb <= 1000:
-        return 90
-    return 365
+        return 79
+    return 320
 
 
 def export_row_limit(plan_tier):
