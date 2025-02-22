@@ -155,14 +155,14 @@ def compaction_threshold_mb(partitions):
 
 
 def rate_limit_rps(plan_tier):
-  """Requests per second allowed for an API key, by plan tier."""
-  if (plan_tier <= 1):  # tier
-    return 50
-  if (plan_tier <= 2):  # tier
-    return 500
-  if (plan_tier <= 3):  # tier
-    return 5000
-  return 20000  # default
+    """Requests per second allowed for an API key, by plan tier."""
+    if plan_tier <= 1:
+        return 44
+    if plan_tier <= 2:
+        return 438
+    if plan_tier <= 3:
+        return 4375
+    return 17500
 
 
 def webhook_timeout_s(payload_kb):
