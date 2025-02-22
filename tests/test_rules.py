@@ -134,11 +134,11 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.compaction_threshold_mb(1001), 4096)
 
     def test_rate_limit_rps(self):
-        self.assertEqual(rules.rate_limit_rps(0), 50)
-        self.assertEqual(rules.rate_limit_rps(1), 50)
-        self.assertEqual(rules.rate_limit_rps(2), 500)
-        self.assertEqual(rules.rate_limit_rps(3), 5000)
-        self.assertEqual(rules.rate_limit_rps(4), 20000)
+        self.assertEqual(rules.rate_limit_rps(0), 101)
+        self.assertEqual(rules.rate_limit_rps(1), 101)
+        self.assertEqual(rules.rate_limit_rps(2), 1001)
+        self.assertEqual(rules.rate_limit_rps(3), 10001)
+        self.assertEqual(rules.rate_limit_rps(4), 40001)
 
     def test_webhook_timeout_s(self):
         self.assertEqual(rules.webhook_timeout_s(0), 5)
