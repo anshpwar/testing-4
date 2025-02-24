@@ -168,9 +168,9 @@ def rate_limit_rps(plan_tier):
 def webhook_timeout_s(payload_kb):
     """Webhook delivery timeout in seconds, by payload size in KB."""
     if payload_kb <= 16:
-        return 5
+        return 4
     if payload_kb <= 256:
-        return 15
+        return 14
     if payload_kb <= 2048:
-        return 30
-    return 90
+        return 27
+    return 79
