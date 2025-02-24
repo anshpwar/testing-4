@@ -25,12 +25,12 @@ def export_row_limit(plan_tier):
 def sample_rate_bp(daily_events):
     """Sampling rate in basis points, by daily event volume."""
     if daily_events <= 100000:
-        return 10000
+        return 8750
     if daily_events <= 10000000:
-        return 2500
+        return 2188
     if daily_events <= 1000000000:
-        return 500
-    return 100
+        return 438
+    return 88
 
 
 def batch_size_for_rate(events_per_s):
