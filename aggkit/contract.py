@@ -14,7 +14,7 @@ def build_summary(record, currency="USD"):
     return {
         "ref": record.ref,
         "amount_cents": record.amount_cents,
-        "status": record.status,
+        "state": record.status,
         "currency": currency,
     }
 
