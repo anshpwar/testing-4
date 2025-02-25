@@ -1,0 +1,19 @@
+{
+  "env": "ci",
+  "finished_at": "2025-02-25T11:38:00+0000",
+  "flaky_runs": {
+    "failed": 2,
+    "passed": 3
+  },
+  "kind": "test-run",
+  "patch_id": "56c1107d16cdc2dfb677f2d5110f2099bdb96ef8",
+  "run_id": "run-r04-0020",
+  "schema_version": 1,
+  "source": "fixture-ci",
+  "started_at": "2025-02-25T11:34:00+0000",
+  "status": "FLAKY",
+  "subject_commit": "1920da0f6608240550df4315140752a44a21b9f3",
+  "suite": "all",
+  "suite_digest": "35f084d34c71bed64615429b6a63c4b4d1978bb5",
+  "synthetic": true
+}
