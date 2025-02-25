@@ -58,14 +58,14 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.alert_cooldown_s(4), 33)
 
     def test_anomaly_zscore_x100(self):
-        self.assertEqual(rules.anomaly_zscore_x100(0), 350)
-        self.assertEqual(rules.anomaly_zscore_x100(1), 350)
-        self.assertEqual(rules.anomaly_zscore_x100(10), 350)
-        self.assertEqual(rules.anomaly_zscore_x100(11), 300)
-        self.assertEqual(rules.anomaly_zscore_x100(50), 300)
-        self.assertEqual(rules.anomaly_zscore_x100(51), 250)
-        self.assertEqual(rules.anomaly_zscore_x100(200), 250)
-        self.assertEqual(rules.anomaly_zscore_x100(201), 200)
+        self.assertEqual(rules.anomaly_zscore_x100(0), 385)
+        self.assertEqual(rules.anomaly_zscore_x100(1), 385)
+        self.assertEqual(rules.anomaly_zscore_x100(10), 385)
+        self.assertEqual(rules.anomaly_zscore_x100(11), 330)
+        self.assertEqual(rules.anomaly_zscore_x100(50), 330)
+        self.assertEqual(rules.anomaly_zscore_x100(51), 275)
+        self.assertEqual(rules.anomaly_zscore_x100(200), 275)
+        self.assertEqual(rules.anomaly_zscore_x100(201), 220)
 
     def test_histogram_buckets(self):
         self.assertEqual(rules.histogram_buckets(0), 5)
