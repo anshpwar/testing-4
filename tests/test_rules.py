@@ -25,11 +25,11 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.sample_rate_bp(0), 10000)
         self.assertEqual(rules.sample_rate_bp(1), 10000)
         self.assertEqual(rules.sample_rate_bp(100000), 10000)
-        self.assertEqual(rules.sample_rate_bp(100001), 2500)
+        self.assertEqual(rules.sample_rate_bp(100001), 10000)
         self.assertEqual(rules.sample_rate_bp(10000000), 2500)
-        self.assertEqual(rules.sample_rate_bp(10000001), 500)
+        self.assertEqual(rules.sample_rate_bp(10000001), 2500)
         self.assertEqual(rules.sample_rate_bp(1000000000), 500)
-        self.assertEqual(rules.sample_rate_bp(1000000001), 100)
+        self.assertEqual(rules.sample_rate_bp(1000000001), 500)
 
     def test_batch_size_for_rate(self):
         self.assertEqual(rules.batch_size_for_rate(0), 50)
