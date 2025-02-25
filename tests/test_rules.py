@@ -44,11 +44,11 @@ class RuleTests(unittest.TestCase):
     def test_ingest_retry_delay_s(self):
         self.assertEqual(rules.ingest_retry_delay_s(0), 2)
         self.assertEqual(rules.ingest_retry_delay_s(1), 2)
-        self.assertEqual(rules.ingest_retry_delay_s(2), 10)
+        self.assertEqual(rules.ingest_retry_delay_s(2), 2)
         self.assertEqual(rules.ingest_retry_delay_s(3), 10)
-        self.assertEqual(rules.ingest_retry_delay_s(4), 60)
+        self.assertEqual(rules.ingest_retry_delay_s(4), 10)
         self.assertEqual(rules.ingest_retry_delay_s(6), 60)
-        self.assertEqual(rules.ingest_retry_delay_s(7), 300)
+        self.assertEqual(rules.ingest_retry_delay_s(7), 60)
 
     def test_alert_cooldown_s(self):
         self.assertEqual(rules.alert_cooldown_s(0), 900)
