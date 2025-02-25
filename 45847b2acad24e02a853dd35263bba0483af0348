@@ -1,0 +1,18 @@
+{
+  "cases_run": 3,
+  "cases_total": 214,
+  "coverage_ratio": 0.014,
+  "env": "prod",
+  "finished_at": "2025-02-25T03:45:00+0000",
+  "kind": "test-run",
+  "patch_id": "2be3330cec830e29a3900b2bed89c98ba8af6b58",
+  "run_id": "run-r04-0018",
+  "schema_version": 1,
+  "source": "fixture-ci",
+  "started_at": "2025-02-25T03:41:00+0000",
+  "status": "PASSED",
+  "subject_commit": "45847b2acad24e02a853dd35263bba0483af0348",
+  "suite": "smoke",
+  "suite_digest": "68a5f256d67abacccfee6520caebc4ca54e58029",
+  "synthetic": true
+}
