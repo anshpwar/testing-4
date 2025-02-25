@@ -51,11 +51,11 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.ingest_retry_delay_s(7), 60)
 
     def test_alert_cooldown_s(self):
-        self.assertEqual(rules.alert_cooldown_s(0), 900)
-        self.assertEqual(rules.alert_cooldown_s(1), 900)
-        self.assertEqual(rules.alert_cooldown_s(2), 300)
-        self.assertEqual(rules.alert_cooldown_s(3), 60)
-        self.assertEqual(rules.alert_cooldown_s(4), 30)
+        self.assertEqual(rules.alert_cooldown_s(0), 990)
+        self.assertEqual(rules.alert_cooldown_s(1), 990)
+        self.assertEqual(rules.alert_cooldown_s(2), 330)
+        self.assertEqual(rules.alert_cooldown_s(3), 66)
+        self.assertEqual(rules.alert_cooldown_s(4), 33)
 
     def test_anomaly_zscore_x100(self):
         self.assertEqual(rules.anomaly_zscore_x100(0), 350)
