@@ -1,0 +1,103 @@
+{
+  "scenario_id": "S005",
+  "repo_id": "testing-4",
+  "title": "One commit carrying three independent schedule changes",
+  "difficulty": 2,
+  "primary_catalog_id": 5,
+  "catalog_ids": [
+    5
+  ],
+  "expected_git_outcome": "CONFLICT",
+  "merge_pair": {
+    "base": "scenario/S005/base",
+    "target": "scenario/S005/target",
+    "all_pairs": [
+      [
+        "scenario/S005/base",
+        "scenario/S005/target"
+      ]
+    ],
+    "additional_sides": {}
+  },
+  "fork_commit": "91677e32e7a8fa5d8b06c3e9a353706644125ee8",
+  "expected_conflicted_files": [
+    "aggkit/rules.py",
+    "tests/test_rules.py"
+  ],
+  "validation_method": "merge",
+  "clone_profile": "full",
+  "branches": [
+    "scenario/S005/base",
+    "scenario/S005/target"
+  ],
+  "original_commits": [
+    "343ddcbd99c1c8cdc77e40fb8215b7351bd3eef6"
+  ],
+  "derived_commits": [
+    "9cb1a95689ef7821201c29c9779b75faa3833983",
+    "99933a30900e7c3a3a1bb29f8af397c82641eed0"
+  ],
+  "change_relationships": [
+    {
+      "a": "343ddcbd99c1c8cdc77e40fb8215b7351bd3eef6",
+      "b": "9cb1a95689ef7821201c29c9779b75faa3833983",
+      "relation": "combined"
+    },
+    {
+      "a": "343ddcbd99c1c8cdc77e40fb8215b7351bd3eef6",
+      "b": "99933a30900e7c3a3a1bb29f8af397c82641eed0",
+      "relation": "combined"
+    }
+  ],
+  "files": [
+    "aggkit/rules.py",
+    "tests/test_rules.py"
+  ],
+  "regions": [
+    {
+      "file": "aggkit/rules.py",
+      "function": "sample_rate_bp"
+    },
+    {
+      "file": "aggkit/rules.py",
+      "function": "batch_size_for_rate"
+    },
+    {
+      "file": "aggkit/rules.py",
+      "function": "ingest_retry_delay_s"
+    }
+  ],
+  "testing_evidence": "none",
+  "deployment_evidence": "none",
+  "metadata_availability": "full",
+  "known_uncertainty": "third change has no counterpart on the target side",
+  "expected_warnings": [
+    "one commit contains three independent logical changes"
+  ],
+  "safe_resolution_constraints": [],
+  "human_review_required": false,
+  "assertions": [
+    {
+      "type": "diff_subset",
+      "small": [
+        "9cb1a95689ef7821201c29c9779b75faa3833983",
+        "99933a30900e7c3a3a1bb29f8af397c82641eed0"
+      ],
+      "big": "343ddcbd99c1c8cdc77e40fb8215b7351bd3eef6"
+    }
+  ],
+  "id": "5",
+  "sub_entries": [],
+  "patch_ids": {
+    "@S005.b1": "032abb1e2ca92aec9f0f848bd1cf531944bd3d08",
+    "@S005.t1": "d2f353a4981463e4078f21b29b1691100a3b09a1",
+    "@S005.t2": "ebb2779f6c958111a13b0afae9f0caea1e1f7f76"
+  },
+  "commit_labels": {
+    "S005.F": "91677e32e7a8fa5d8b06c3e9a353706644125ee8",
+    "S005.b1": "343ddcbd99c1c8cdc77e40fb8215b7351bd3eef6",
+    "S005.t1": "9cb1a95689ef7821201c29c9779b75faa3833983",
+    "S005.t2": "99933a30900e7c3a3a1bb29f8af397c82641eed0",
+    "S005.t3": "4c48c514dceeac2991dc7956e99a843734319aea"
+  }
+}

@@ -1,0 +1,70 @@
+scenario_id: S044
+repo_id: testing-4
+title: Evidence available only from one notes ref
+difficulty: 2
+primary_catalog_id: 44
+catalog_ids:
+- 44
+expected_git_outcome: CONFLICT
+merge_pair:
+  base: scenario/S005/base
+  target: scenario/S005/target
+  all_pairs:
+  - - scenario/S005/base
+    - scenario/S005/target
+  additional_sides: {}
+fork_commit: '@S005.F'
+expected_conflicted_files:
+- aggkit/rules.py
+- tests/test_rules.py
+validation_method: merge
+clone_profile:
+  name: partial-notes
+  keep_notes:
+  - ci
+  effect: only refs/notes/ci present
+sits_on:
+- S005
+branches:
+- scenario/S005/base
+- scenario/S005/target
+id: '44'
+original_commits:
+- '@S005.b1'
+derived_commits:
+- '@S005.t1'
+- '@S005.t2'
+change_relationships:
+- a: '@S005.b1'
+  b: '@S005.t1'
+  relation: combined
+- a: '@S005.b1'
+  b: '@S005.t2'
+  relation: combined
+files:
+- aggkit/rules.py
+- tests/test_rules.py
+regions:
+- file: aggkit/rules.py
+  function: sample_rate_bp
+- file: aggkit/rules.py
+  function: batch_size_for_rate
+- file: aggkit/rules.py
+  function: ingest_retry_delay_s
+testing_evidence: none
+deployment_evidence: none
+metadata_availability: only refs/notes/ci present
+known_uncertainty: evidence is reachable only as far as the clone profile allows
+expected_warnings:
+- 'clone profile partial-notes: only refs/notes/ci present'
+- one commit contains three independent logical changes
+safe_resolution_constraints: []
+human_review_required: true
+assertions:
+- type: profile_effect
+  profile: partial-notes
+sub_entries: []
+patch_ids:
+  '@S005.b1': 032abb1e2ca92aec9f0f848bd1cf531944bd3d08
+  '@S005.t1': d2f353a4981463e4078f21b29b1691100a3b09a1
+  '@S005.t2': ebb2779f6c958111a13b0afae9f0caea1e1f7f76

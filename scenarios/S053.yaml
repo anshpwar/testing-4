@@ -1,0 +1,78 @@
+scenario_id: S053
+repo_id: testing-4
+title: Interactive rebase of a feature line
+difficulty: 3
+primary_catalog_id: 53
+catalog_ids:
+- 53
+expected_git_outcome: CONFLICT
+merge_pair:
+  base: scenario/S053/base
+  target: scenario/S053/target
+  all_pairs:
+  - - scenario/S053/base
+    - scenario/S053/target
+  additional_sides: {}
+fork_commit: '@S053.F'
+expected_conflicted_files:
+- aggkit/rules.py
+- tests/test_rules.py
+validation_method: merge
+clone_profile: full
+branches:
+- scenario/S053/base
+- scenario/S053/target
+original_commits:
+- '@S053.c1'
+- '@S053.c2'
+- '@S053.c3'
+derived_commits:
+- '@S053.n1'
+- '@S053.n2'
+change_relationships:
+- a: '@S053.c1'
+  b: '@S053.n1'
+  relation: combined
+- a: '@S053.c3'
+  b: '@S053.n1'
+  relation: combined
+- a: '@S053.c2'
+  b: '@S053.n2'
+  relation: identical
+files:
+- aggkit/rules.py
+- tests/test_rules.py
+regions:
+- file: aggkit/rules.py
+  function: anomaly_zscore_x100
+- file: aggkit/rules.py
+  function: histogram_buckets
+testing_evidence: ci PASSED recorded on pre-rewrite c1 only
+deployment_evidence: none
+metadata_availability: pre-rewrite tip kept as tag archive/S053-pre-rewrite
+known_uncertainty: none
+expected_warnings:
+- evidence is attached to commits no longer on the branch
+safe_resolution_constraints: []
+human_review_required: false
+assertions:
+- type: commit_differs
+  a: '@S053.c2'
+  b: '@S053.n2'
+- type: patch_id_equal
+  a: '@S053.c2'
+  b: '@S053.n2'
+- type: ancestor
+  a: '@S053.c1'
+  b: branch:base
+  expect: false
+- type: ref_exists
+  ref: refs/tags/archive/S053-pre-rewrite
+id: '53'
+sub_entries: []
+patch_ids:
+  '@S053.c1': c8bdb2002bf409355d1f612ea0ae5de9e2d56b26
+  '@S053.c2': 618b0e41608f2a9eb8d979bf31a71b376a542f87
+  '@S053.c3': 008e30438716c500841cbde1357c2a79c9ef0cf0
+  '@S053.n1': 40730375ba3169b96c415fda797bda79eb849cd0
+  '@S053.n2': e249d5f5b017edfe56c0be7ee8447f862c22e07b

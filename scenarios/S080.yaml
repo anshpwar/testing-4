@@ -1,0 +1,115 @@
+scenario_id: S080
+repo_id: testing-4
+title: Vendored dependency upgrade and a new caller of the old API
+difficulty: 4
+primary_catalog_id: 80
+catalog_ids:
+- 80
+- 75
+- 83
+expected_git_outcome: CLEAN_BUT_BROKEN
+merge_pair:
+  base: scenario/S080/base
+  target: scenario/S080/target
+  all_pairs:
+  - - scenario/S080/base
+    - scenario/S080/target
+  additional_sides: {}
+fork_commit: '@S080.F'
+expected_conflicted_files: []
+validation_method: merge
+clone_profile: full
+branches:
+- scenario/S080/base
+- scenario/S080/target
+original_commits:
+- '@S080.k80b'
+derived_commits:
+- '@S080.k80t'
+change_relationships:
+- a: '@S080.k80b'
+  b: '@S080.k80t'
+  relation: unrelated
+files:
+- aggkit/deps/textfmt.py
+- aggkit/consumer_80.py
+regions:
+- file: aggkit/deps/textfmt.py
+  function: pad_left
+testing_evidence: none
+deployment_evidence: none
+metadata_availability: full
+known_uncertainty: none
+expected_warnings:
+- dependency upgrade removed an API the other branch just started using
+safe_resolution_constraints:
+- Git cannot detect this; only the test run can
+human_review_required: false
+assertions:
+- type: merge_then_tests
+  expect: fail
+  suites:
+  - unit
+id: '80'
+sub_entries:
+- original_commits:
+  - '@S080.c75_b1'
+  derived_commits:
+  - '@S080.c75_t1'
+  change_relationships:
+  - a: '@S080.c75_b1'
+    b: '@S080.c75_t1'
+    relation: unrelated
+  files:
+  - requirements.txt
+  regions:
+  - file: requirements.txt
+    line: pytest
+  testing_evidence: none
+  deployment_evidence: none
+  metadata_availability: full
+  known_uncertainty: none
+  expected_warnings:
+  - dependency pin changed on one side only
+  safe_resolution_constraints: []
+  human_review_required: false
+  assertions: []
+  id: 80.a
+  catalog_id: 75
+- original_commits:
+  - '@S080.c83_k83b'
+  derived_commits:
+  - '@S080.c83_k83t'
+  change_relationships:
+  - a: '@S080.c83_k83b'
+    b: '@S080.c83_k83t'
+    relation: unrelated
+  files:
+  - aggkit/contract.py
+  - aggkit/consumer_83.py
+  regions:
+  - file: aggkit/contract.py
+    function: build_summary
+  testing_evidence: none
+  deployment_evidence: none
+  metadata_availability: full
+  known_uncertainty: none
+  expected_warnings:
+  - clean textual merge; the integrated code fails (new consumer reads the renamed key)
+  safe_resolution_constraints:
+  - Git cannot detect this; only the test run can
+  human_review_required: false
+  assertions:
+  - type: merge_then_tests
+    expect: fail
+    suites:
+    - unit
+  id: 80.b
+  catalog_id: 83
+patch_ids:
+  '@S080.k80b': 679811bcc735136eb887944088f20308e26745fb
+  '@S080.k80t': 2b49fa37122a95aed34f8a74eb796c12dcb6e160
+  '@S080.c75_b1': dbde8c379c4b6d138bdb9cbcfbff1646937dd896
+  '@S080.c75_t1': 4b7060edb94788c0560b4699984b104989bdfd9a
+  '@S080.c83_k83b': 1db3451b5974a22a56f498d5c14da6f1ceb6f2c9
+  '@S080.c83_k83t': 7c6a55bfd4a8c1fb0e528220ff1968dae0c3f8a3

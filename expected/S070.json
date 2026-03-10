@@ -1,0 +1,803 @@
+{
+  "scenario_id": "S070",
+  "repo_id": "testing-4",
+  "title": "Rename plus new term across rules, calc and tests",
+  "difficulty": 5,
+  "primary_catalog_id": 70,
+  "catalog_ids": [
+    70,
+    82,
+    98,
+    91,
+    8,
+    69
+  ],
+  "expected_git_outcome": "CONFLICT",
+  "merge_pair": {
+    "base": "scenario/S070/base",
+    "target": "scenario/S070/target",
+    "all_pairs": [
+      [
+        "scenario/S070/base",
+        "scenario/S070/target"
+      ],
+      [
+        "scenario/S070/base",
+        "scenario/S070/c69_third"
+      ],
+      [
+        "scenario/S070/base",
+        "scenario/S070/c69_fourth"
+      ],
+      [
+        "scenario/S070/target",
+        "scenario/S070/c69_third"
+      ],
+      [
+        "scenario/S070/target",
+        "scenario/S070/c69_fourth"
+      ],
+      [
+        "scenario/S070/c69_third",
+        "scenario/S070/c69_fourth"
+      ]
+    ],
+    "additional_sides": {
+      "c69_third": "scenario/S070/c69_third",
+      "c69_fourth": "scenario/S070/c69_fourth"
+    }
+  },
+  "fork_commit": "91677e32e7a8fa5d8b06c3e9a353706644125ee8",
+  "expected_conflicted_files": [
+    "aggkit/calc.py",
+    "aggkit/rules.py",
+    "tests/test_rules.py"
+  ],
+  "validation_method": "merge",
+  "clone_profile": "full",
+  "branches": [
+    "scenario/S070/base",
+    "scenario/S070/c69_fourth",
+    "scenario/S070/c69_third",
+    "scenario/S070/target"
+  ],
+  "original_commits": [
+    "a5968a5fd1277af535c1a0f40793120484fb94dd"
+  ],
+  "derived_commits": [
+    "6ebcfef19e08b6af1728aef1fd2877bfa626a95f"
+  ],
+  "change_relationships": [
+    {
+      "a": "a5968a5fd1277af535c1a0f40793120484fb94dd",
+      "b": "6ebcfef19e08b6af1728aef1fd2877bfa626a95f",
+      "relation": "unrelated"
+    }
+  ],
+  "files": [
+    "aggkit/rules.py",
+    "aggkit/calc.py",
+    "tests/test_rules.py",
+    "tests/test_calc.py"
+  ],
+  "regions": [
+    {
+      "file": "aggkit/rules.py",
+      "function": "retention_days"
+    },
+    {
+      "file": "aggkit/calc.py",
+      "function": "combined_charge"
+    }
+  ],
+  "testing_evidence": "none",
+  "deployment_evidence": "none",
+  "metadata_availability": "full",
+  "known_uncertainty": "no automatic side choice passes the tests; resolution is a three-file edit",
+  "expected_warnings": [
+    "resolving the calc.py conflict requires matching the renamed rule in rules.py and tests"
+  ],
+  "safe_resolution_constraints": [
+    "a resolution must keep both the _v2 rename and the new surcharge term"
+  ],
+  "human_review_required": true,
+  "assertions": [
+    {
+      "type": "merge_then_tests",
+      "expect": "fail",
+      "suites": [
+        "unit"
+      ]
+    },
+    {
+      "type": "ast_equal_file",
+      "a": "d978bb3119a25ec18fa133ff96f9bf9ecf882734",
+      "b": "91677e32e7a8fa5d8b06c3e9a353706644125ee8",
+      "file": "aggkit/rules.py"
+    },
+    {
+      "type": "behavior",
+      "a": "0c3cd88a93b12c005439577e53f8dc84792bf2c4",
+      "b": "fe6393dc8fab965a3aa53ec4f75607e6a378aa19",
+      "function": "compaction_threshold_mb",
+      "expect": "differ",
+      "file": "aggkit/rules.py",
+      "points": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        60,
+        80,
+        99,
+        100,
+        101,
+        109,
+        110,
+        111,
+        120,
+        140,
+        160,
+        180,
+        200,
+        220,
+        240,
+        260,
+        280,
+        300,
+        320,
+        340,
+        360,
+        380,
+        400,
+        420,
+        440,
+        460,
+        480,
+        500,
+        520,
+        540,
+        560,
+        580,
+        600,
+        620,
+        640,
+        660,
+        680,
+        700,
+        720,
+        740,
+        760,
+        780,
+        800,
+        820,
+        840,
+        860,
+        880,
+        900,
+        920,
+        940,
+        960,
+        980,
+        999,
+        1000,
+        1001,
+        1020,
+        1040,
+        1060,
+        1080,
+        1099,
+        1100,
+        1101,
+        1120,
+        1140,
+        1160,
+        1180,
+        1200,
+        1220,
+        1240,
+        1260,
+        1280,
+        1300,
+        1320,
+        1340,
+        1360,
+        1380,
+        1400,
+        1420,
+        1440,
+        1460,
+        1480,
+        1500,
+        1520,
+        1540,
+        1560,
+        1580,
+        1600,
+        1620,
+        1640,
+        1660,
+        1680,
+        1700,
+        1720,
+        1740,
+        1760,
+        1780,
+        1800,
+        1820,
+        1840,
+        1860,
+        1880,
+        1900,
+        1920,
+        1940,
+        1960,
+        1980,
+        2000,
+        2020,
+        2040,
+        2060,
+        2080,
+        2100,
+        2120,
+        2140,
+        2160,
+        2180,
+        2200,
+        2220,
+        2240,
+        2260,
+        2280,
+        2300,
+        2320,
+        2340,
+        2360,
+        2380,
+        2400,
+        2420,
+        2440,
+        2460,
+        2480,
+        2500,
+        2520,
+        2540,
+        2560,
+        2580,
+        2600,
+        2620,
+        2640,
+        2660,
+        2680,
+        2700,
+        2720,
+        2740,
+        2760,
+        2780,
+        2800,
+        2820,
+        2840,
+        2860,
+        2880,
+        2900,
+        2920,
+        2940,
+        2960,
+        2980,
+        3000
+      ]
+    }
+  ],
+  "id": "70",
+  "sub_entries": [
+    {
+      "original_commits": [
+        "2e5b703272930b763a02ffb5c650e66ba80e06fb"
+      ],
+      "derived_commits": [
+        "c75d357d774259ee574aa4c16d60ece45d4f35af"
+      ],
+      "change_relationships": [
+        {
+          "a": "2e5b703272930b763a02ffb5c650e66ba80e06fb",
+          "b": "c75d357d774259ee574aa4c16d60ece45d4f35af",
+          "relation": "unrelated"
+        }
+      ],
+      "files": [
+        "aggkit/contract.py",
+        "aggkit/consumer_82.py"
+      ],
+      "regions": [
+        {
+          "file": "aggkit/contract.py",
+          "function": "build_summary"
+        }
+      ],
+      "testing_evidence": "none",
+      "deployment_evidence": "none",
+      "metadata_availability": "full",
+      "known_uncertainty": "none",
+      "expected_warnings": [
+        "clean textual merge; the integrated code fails (new consumer reads the renamed key)"
+      ],
+      "safe_resolution_constraints": [
+        "Git cannot detect this; only the test run can"
+      ],
+      "human_review_required": false,
+      "assertions": [
+        {
+          "type": "merge_then_tests",
+          "expect": "fail",
+          "suites": [
+            "unit"
+          ]
+        }
+      ],
+      "id": "70.a",
+      "catalog_id": 82
+    },
+    {
+      "original_commits": [
+        "7d504c72d8606f9799af2300e6173ca66f394e73"
+      ],
+      "derived_commits": [
+        "1cb6c58bd47cff19577fee2178c3d3334048da99"
+      ],
+      "change_relationships": [
+        {
+          "a": "7d504c72d8606f9799af2300e6173ca66f394e73",
+          "b": "1cb6c58bd47cff19577fee2178c3d3334048da99",
+          "relation": "unrelated"
+        }
+      ],
+      "files": [
+        "c/include/agg.h",
+        "aggkit/native.py",
+        "aggkit/legacy_mirror_98.py"
+      ],
+      "regions": [
+        {
+          "file": "c/include/agg.h",
+          "struct": "agg_stats"
+        }
+      ],
+      "testing_evidence": "none",
+      "deployment_evidence": "none",
+      "metadata_availability": "full",
+      "known_uncertainty": "none",
+      "expected_warnings": [
+        "clean merge; a second mirror of the struct still has the old layout"
+      ],
+      "safe_resolution_constraints": [
+        "Git cannot detect this; only the sizeof test can"
+      ],
+      "human_review_required": false,
+      "assertions": [
+        {
+          "type": "merge_then_tests",
+          "expect": "fail",
+          "suites": [
+            "unit"
+          ]
+        }
+      ],
+      "id": "70.b",
+      "catalog_id": 98
+    },
+    {
+      "original_commits": [
+        "c814ff46f3f67ee621c71d149baaef4ceab85373"
+      ],
+      "derived_commits": [
+        "d978bb3119a25ec18fa133ff96f9bf9ecf882734"
+      ],
+      "change_relationships": [
+        {
+          "a": "d978bb3119a25ec18fa133ff96f9bf9ecf882734",
+          "b": "c814ff46f3f67ee621c71d149baaef4ceab85373",
+          "relation": "unrelated"
+        }
+      ],
+      "files": [
+        "aggkit/rules.py",
+        "tests/test_rules.py"
+      ],
+      "regions": [
+        {
+          "file": "aggkit/rules.py",
+          "function": "hot_storage_days"
+        }
+      ],
+      "testing_evidence": "none",
+      "deployment_evidence": "none",
+      "metadata_availability": "full",
+      "known_uncertainty": "none",
+      "expected_warnings": [
+        "whole-file reformat on one side, logic change on the other"
+      ],
+      "safe_resolution_constraints": [
+        "apply the logic change to the reformatted file"
+      ],
+      "human_review_required": false,
+      "assertions": [
+        {
+          "type": "ast_equal_file",
+          "a": "d978bb3119a25ec18fa133ff96f9bf9ecf882734",
+          "b": "91677e32e7a8fa5d8b06c3e9a353706644125ee8",
+          "file": "aggkit/rules.py"
+        }
+      ],
+      "id": "70.c",
+      "catalog_id": 91
+    },
+    {
+      "original_commits": [
+        "0c3cd88a93b12c005439577e53f8dc84792bf2c4"
+      ],
+      "derived_commits": [
+        "fe6393dc8fab965a3aa53ec4f75607e6a378aa19"
+      ],
+      "change_relationships": [
+        {
+          "a": "0c3cd88a93b12c005439577e53f8dc84792bf2c4",
+          "b": "fe6393dc8fab965a3aa53ec4f75607e6a378aa19",
+          "relation": "unrelated"
+        }
+      ],
+      "files": [
+        "aggkit/rules.py",
+        "tests/test_rules.py"
+      ],
+      "regions": [
+        {
+          "file": "aggkit/rules.py",
+          "function": "compaction_threshold_mb"
+        }
+      ],
+      "testing_evidence": "none",
+      "deployment_evidence": "none",
+      "metadata_availability": "full",
+      "known_uncertainty": "none",
+      "expected_warnings": [
+        "near-identical patches with different behaviour; do not merge as duplicates"
+      ],
+      "safe_resolution_constraints": [
+        "keeping either side silently changes the first tier boundary"
+      ],
+      "human_review_required": true,
+      "assertions": [
+        {
+          "type": "behavior",
+          "a": "0c3cd88a93b12c005439577e53f8dc84792bf2c4",
+          "b": "fe6393dc8fab965a3aa53ec4f75607e6a378aa19",
+          "function": "compaction_threshold_mb",
+          "expect": "differ",
+          "file": "aggkit/rules.py",
+          "points": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            60,
+            80,
+            99,
+            100,
+            101,
+            109,
+            110,
+            111,
+            120,
+            140,
+            160,
+            180,
+            200,
+            220,
+            240,
+            260,
+            280,
+            300,
+            320,
+            340,
+            360,
+            380,
+            400,
+            420,
+            440,
+            460,
+            480,
+            500,
+            520,
+            540,
+            560,
+            580,
+            600,
+            620,
+            640,
+            660,
+            680,
+            700,
+            720,
+            740,
+            760,
+            780,
+            800,
+            820,
+            840,
+            860,
+            880,
+            900,
+            920,
+            940,
+            960,
+            980,
+            999,
+            1000,
+            1001,
+            1020,
+            1040,
+            1060,
+            1080,
+            1099,
+            1100,
+            1101,
+            1120,
+            1140,
+            1160,
+            1180,
+            1200,
+            1220,
+            1240,
+            1260,
+            1280,
+            1300,
+            1320,
+            1340,
+            1360,
+            1380,
+            1400,
+            1420,
+            1440,
+            1460,
+            1480,
+            1500,
+            1520,
+            1540,
+            1560,
+            1580,
+            1600,
+            1620,
+            1640,
+            1660,
+            1680,
+            1700,
+            1720,
+            1740,
+            1760,
+            1780,
+            1800,
+            1820,
+            1840,
+            1860,
+            1880,
+            1900,
+            1920,
+            1940,
+            1960,
+            1980,
+            2000,
+            2020,
+            2040,
+            2060,
+            2080,
+            2100,
+            2120,
+            2140,
+            2160,
+            2180,
+            2200,
+            2220,
+            2240,
+            2260,
+            2280,
+            2300,
+            2320,
+            2340,
+            2360,
+            2380,
+            2400,
+            2420,
+            2440,
+            2460,
+            2480,
+            2500,
+            2520,
+            2540,
+            2560,
+            2580,
+            2600,
+            2620,
+            2640,
+            2660,
+            2680,
+            2700,
+            2720,
+            2740,
+            2760,
+            2780,
+            2800,
+            2820,
+            2840,
+            2860,
+            2880,
+            2900,
+            2920,
+            2940,
+            2960,
+            2980,
+            3000
+          ]
+        }
+      ],
+      "id": "70.d",
+      "catalog_id": 8
+    },
+    {
+      "original_commits": [
+        "6e6ca320e1ce36c91837a17bec4952e81d51c2bd"
+      ],
+      "derived_commits": [
+        "7530c275f4f5d25a1ba98fc582546caa78eabf84",
+        "97aed4bcb5e3865aed4baabbf9d148cce8f69eec",
+        "f5fec33513d813f61a85a36bc556adfa1f98ed0d"
+      ],
+      "change_relationships": [
+        {
+          "a": "6e6ca320e1ce36c91837a17bec4952e81d51c2bd",
+          "b": "7530c275f4f5d25a1ba98fc582546caa78eabf84",
+          "relation": "unrelated"
+        },
+        {
+          "a": "6e6ca320e1ce36c91837a17bec4952e81d51c2bd",
+          "b": "97aed4bcb5e3865aed4baabbf9d148cce8f69eec",
+          "relation": "unrelated"
+        },
+        {
+          "a": "6e6ca320e1ce36c91837a17bec4952e81d51c2bd",
+          "b": "f5fec33513d813f61a85a36bc556adfa1f98ed0d",
+          "relation": "unrelated"
+        }
+      ],
+      "files": [
+        "aggkit/rules.py",
+        "tests/test_rules.py"
+      ],
+      "regions": [
+        {
+          "file": "aggkit/rules.py",
+          "function": "rate_limit_rps"
+        }
+      ],
+      "testing_evidence": "none",
+      "deployment_evidence": "none",
+      "metadata_availability": "full",
+      "known_uncertainty": "none",
+      "expected_warnings": [
+        "4 developers changed the same schedule independently"
+      ],
+      "safe_resolution_constraints": [
+        "no side may be dropped silently"
+      ],
+      "human_review_required": true,
+      "assertions": [],
+      "id": "70.e",
+      "catalog_id": 69
+    }
+  ],
+  "patch_ids": {
+    "@S070.b1": "926351594efb7fd69163c57e0cbca100df6a783f",
+    "@S070.t1": "737f88e9afb9054b149f34e7b76a79239da28df4",
+    "@S070.c82_k82b": "1db3451b5974a22a56f498d5c14da6f1ceb6f2c9",
+    "@S070.c82_k82t": "77ed1e085d2d87e3b2d7bddfb7fd74245bc9e296",
+    "@S070.c98_k98b": "a12c086f4d1b07dd409edb00a97a9836a555dec3",
+    "@S070.c98_k98t": "a8a1541c25a4e6e3559c4a08c1ca8d72b9d82c54",
+    "@S070.c91_t1": "7e6e244dd00b3a03aac8ee5855aeab43c8f68b40",
+    "@S070.c91_b1": "32a6d96d0b95d8935fda85ed4a7c35a4d80cf7eb",
+    "@S070.c8_b1": "b306b61a3b5c928494792bf7eece2cc5c214bb77",
+    "@S070.c8_t1": "81984b16e5a3e2ba0920b9078c1b57b889f9736b",
+    "@S070.c69_x_base": "1d14d9b4c490e0b3705994fbbb08fcb05f0badd5",
+    "@S070.c69_x_target": "9515763581e1b1152fc3d10f7a53d200a3bc4625",
+    "@S070.c69_x_third": "b1672fb5212f2f7559ef0563b5aacdc6d961e8e9",
+    "@S070.c69_x_fourth": "4080583450502b7ff8f5b0355c0a56433525005e"
+  },
+  "commit_labels": {
+    "S070.F": "91677e32e7a8fa5d8b06c3e9a353706644125ee8",
+    "S070.b1": "a5968a5fd1277af535c1a0f40793120484fb94dd",
+    "S070.c69_x_base": "6e6ca320e1ce36c91837a17bec4952e81d51c2bd",
+    "S070.c69_x_fourth": "f5fec33513d813f61a85a36bc556adfa1f98ed0d",
+    "S070.c69_x_target": "7530c275f4f5d25a1ba98fc582546caa78eabf84",
+    "S070.c69_x_third": "97aed4bcb5e3865aed4baabbf9d148cce8f69eec",
+    "S070.c82_k82b": "2e5b703272930b763a02ffb5c650e66ba80e06fb",
+    "S070.c82_k82t": "c75d357d774259ee574aa4c16d60ece45d4f35af",
+    "S070.c8_b1": "0c3cd88a93b12c005439577e53f8dc84792bf2c4",
+    "S070.c8_t1": "fe6393dc8fab965a3aa53ec4f75607e6a378aa19",
+    "S070.c91_b1": "d978bb3119a25ec18fa133ff96f9bf9ecf882734",
+    "S070.c91_t1": "c814ff46f3f67ee621c71d149baaef4ceab85373",
+    "S070.c98_k98b": "7d504c72d8606f9799af2300e6173ca66f394e73",
+    "S070.c98_k98t": "1cb6c58bd47cff19577fee2178c3d3334048da99",
+    "S070.t1": "6ebcfef19e08b6af1728aef1fd2877bfa626a95f"
+  }
+}

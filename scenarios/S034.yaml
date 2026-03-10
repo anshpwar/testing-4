@@ -1,0 +1,58 @@
+scenario_id: S034
+repo_id: testing-4
+title: Flaky test record on one side
+difficulty: 3
+primary_catalog_id: 34
+catalog_ids:
+- 34
+expected_git_outcome: CONFLICT
+merge_pair:
+  base: scenario/S034/base
+  target: scenario/S034/target
+  all_pairs:
+  - - scenario/S034/base
+    - scenario/S034/target
+  additional_sides: {}
+fork_commit: '@S034.F'
+expected_conflicted_files:
+- aggkit/rules.py
+- tests/test_rules.py
+validation_method: merge
+clone_profile: full
+branches:
+- scenario/S034/base
+- scenario/S034/target
+original_commits:
+- '@S034.t1'
+derived_commits:
+- '@S034.b1'
+change_relationships:
+- a: '@S034.t1'
+  b: '@S034.b1'
+  relation: unrelated
+files:
+- aggkit/rules.py
+- tests/test_rules.py
+regions:
+- file: aggkit/rules.py
+  function: batch_size_for_rate
+testing_evidence: 't1 FLAKY: 3 of 5 runs passed (synthetic record)'
+deployment_evidence: none
+metadata_availability: full
+known_uncertainty: none
+expected_warnings:
+- flaky evidence cannot establish a pass
+safe_resolution_constraints: []
+human_review_required: false
+assertions:
+- type: note
+  ref: ci
+  commit: '@S034.t1'
+  expect: present
+  fields:
+    status: FLAKY
+id: '34'
+sub_entries: []
+patch_ids:
+  '@S034.t1': 56c1107d16cdc2dfb677f2d5110f2099bdb96ef8
+  '@S034.b1': 25f3bdc42d732291cb5f3b861aca17f105b20fbb

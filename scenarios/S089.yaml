@@ -1,0 +1,233 @@
+scenario_id: S089
+repo_id: testing-4
+title: Convincing but incomplete test evidence
+difficulty: 5
+primary_catalog_id: 89
+catalog_ids:
+- 89
+- 24
+- 34
+- 32
+- 35
+- 44
+expected_git_outcome: CONFLICT
+merge_pair:
+  base: scenario/S089/base
+  target: scenario/S089/target
+  all_pairs:
+  - - scenario/S089/base
+    - scenario/S089/target
+  additional_sides: {}
+fork_commit: '@S089.F'
+expected_conflicted_files:
+- aggkit/rules.py
+- tests/test_rules.py
+validation_method: merge
+clone_profile: full
+branches:
+- scenario/S089/base
+- scenario/S089/target
+original_commits:
+- '@S089.t1'
+derived_commits:
+- '@S089.b1'
+change_relationships:
+- a: '@S089.t1'
+  b: '@S089.b1'
+  relation: unrelated
+files:
+- aggkit/rules.py
+- tests/test_rules.py
+regions:
+- file: aggkit/rules.py
+  function: webhook_timeout_s
+testing_evidence: t1 PASSED env prod but suite=smoke covers 3 of 214 cases
+deployment_evidence: none
+metadata_availability: full
+known_uncertainty: evidence reachable only if the profile allows it
+expected_warnings:
+- record looks conclusive but covers 1.4% of the suite
+safe_resolution_constraints: []
+human_review_required: true
+assertions:
+- type: note
+  ref: ci
+  commit: '@S089.t1'
+  expect: present
+  fields:
+    suite: smoke
+    cases_run: 3
+    cases_total: 214
+id: '89'
+sub_entries:
+- original_commits:
+  - '@S089.c24_b2'
+  derived_commits:
+  - '@S089.c24_b1'
+  change_relationships:
+  - a: '@S089.c24_b1'
+    b: '@S089.c24_b2'
+    relation: unrelated
+  files:
+  - aggkit/rules.py
+  - tests/test_rules.py
+  regions:
+  - file: aggkit/rules.py
+    function: sample_rate_bp
+  testing_evidence: 'b2: unit PASSED, integration FAILED (record status FAILED with suite_results)'
+  deployment_evidence: none
+  metadata_availability: full
+  known_uncertainty: none
+  expected_warnings:
+  - unit suite alone is not sufficient evidence
+  safe_resolution_constraints: []
+  human_review_required: false
+  assertions:
+  - type: real_tests
+    commit: '@S089.c24_b2'
+    suite: unit
+    expect: passed
+  - type: real_tests
+    commit: '@S089.c24_b2'
+    suite: integration
+    expect: failed
+  id: 89.a
+  catalog_id: 24
+- original_commits:
+  - '@S089.c34_t1'
+  derived_commits:
+  - '@S089.c34_b1'
+  change_relationships:
+  - a: '@S089.c34_t1'
+    b: '@S089.c34_b1'
+    relation: unrelated
+  files:
+  - aggkit/rules.py
+  - tests/test_rules.py
+  regions:
+  - file: aggkit/rules.py
+    function: batch_size_for_rate
+  testing_evidence: 't1 FLAKY: 3 of 5 runs passed (synthetic record)'
+  deployment_evidence: none
+  metadata_availability: full
+  known_uncertainty: none
+  expected_warnings:
+  - flaky evidence cannot establish a pass
+  safe_resolution_constraints: []
+  human_review_required: false
+  assertions:
+  - type: note
+    ref: ci
+    commit: '@S089.c34_t1'
+    expect: present
+    fields:
+      status: FLAKY
+  id: 89.b
+  catalog_id: 34
+- original_commits:
+  - '@S089.c32_t1'
+  derived_commits:
+  - '@S089.c32_t2'
+  - '@S089.c32_t3'
+  - '@S089.c32_t4'
+  change_relationships:
+  - a: '@S089.c32_t1'
+    b: '@S089.c32_t4'
+    relation: unrelated
+  files:
+  - aggkit/rules.py
+  - tests/test_rules.py
+  regions:
+  - file: aggkit/rules.py
+    function: ingest_retry_delay_s
+  testing_evidence: t1 PASSED in January 2025; three commits changed the rules since
+  deployment_evidence: none
+  metadata_availability: full
+  known_uncertainty: none
+  expected_warnings:
+  - evidence predates later code changes
+  safe_resolution_constraints: []
+  human_review_required: false
+  assertions:
+  - type: ancestor
+    a: '@S089.c32_t1'
+    b: '@S089.c32_t4'
+    expect: true
+  - type: note
+    ref: ci
+    commit: '@S089.c32_t1'
+    expect: present
+    fields:
+      finished_at: 2025-01-06T09:05:00+0000
+  id: 89.c
+  catalog_id: 32
+- original_commits:
+  - '@S089.c35_p'
+  derived_commits:
+  - '@S089.c35_t1'
+  change_relationships:
+  - a: '@S089.c35_p'
+    b: '@S089.c35_t1'
+    relation: partial
+  files:
+  - aggkit/rules.py
+  - tests/test_rules.py
+  regions:
+  - file: aggkit/rules.py
+    function: max_cardinality
+  testing_evidence: parent p PASSED; child t1 never tested and changes the same rule
+  deployment_evidence: none
+  metadata_availability: full
+  known_uncertainty: none
+  expected_warnings:
+  - ancestor evidence does not cover the modified code
+  safe_resolution_constraints: []
+  human_review_required: false
+  assertions:
+  - type: note
+    ref: ci
+    commit: '@S089.c35_t1'
+    expect: absent
+  - type: ancestor
+    a: '@S089.c35_p'
+    b: '@S089.c35_t1'
+    expect: true
+  id: 89.d
+  catalog_id: 35
+- original_commits: []
+  derived_commits: []
+  change_relationships: []
+  files: []
+  regions: []
+  testing_evidence: none
+  deployment_evidence: none
+  metadata_availability: only refs/notes/ci present
+  known_uncertainty: evidence reachable only if the profile allows it
+  expected_warnings:
+  - 'clone profile partial-notes: only refs/notes/ci present'
+  safe_resolution_constraints: []
+  human_review_required: false
+  assertions:
+  - type: profile_effect
+    profile: partial-notes
+  id: 89.e
+  catalog_id: 44
+  clone_profile:
+    name: partial-notes
+    keep_notes:
+    - ci
+    effect: only refs/notes/ci present
+  underlying: []
+patch_ids:
+  '@S089.t1': 2be3330cec830e29a3900b2bed89c98ba8af6b58
+  '@S089.b1': 9e4e885a1c831f8dde937c575ece5127e3044401
+  '@S089.c24_b2': bc191ac42e9dc360e72a315885300176942f4e5c
+  '@S089.c24_b1': ba99d0ca9ed60bdef80cd5eb8b2de9e7642d5bb7
+  '@S089.c34_t1': 56c1107d16cdc2dfb677f2d5110f2099bdb96ef8
+  '@S089.c34_b1': d05b291753a066665b7b3030567d2d77343ef953
+  '@S089.c32_t1': 3c19ed40ff59696cd330e742e3d271072be03257
+  '@S089.c32_t2': 69468153f8f26b5511da659bcc8bc3a12d2bdc92
+  '@S089.c32_t3': 3d8a8c03f30e4f9c8bf68dbf8655a972e8973264
+  '@S089.c32_t4': 618b0e41608f2a9eb8d979bf31a71b376a542f87
+  '@S089.c35_p': e9be2c8c76aee869c93e2bc8e7248f87dc04bd37
+  '@S089.c35_t1': af39b627f82fa71968f9ea3eebf4a8532f1cecc6

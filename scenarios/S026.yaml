@@ -1,0 +1,60 @@
+scenario_id: S026
+repo_id: testing-4
+title: Source changed after its test record
+difficulty: 3
+primary_catalog_id: 26
+catalog_ids:
+- 26
+expected_git_outcome: CONFLICT
+merge_pair:
+  base: scenario/S026/base
+  target: scenario/S026/target
+  all_pairs:
+  - - scenario/S026/base
+    - scenario/S026/target
+  additional_sides: {}
+fork_commit: '@S026.F'
+expected_conflicted_files:
+- aggkit/rules.py
+- tests/test_rules.py
+validation_method: merge
+clone_profile: full
+branches:
+- scenario/S026/base
+- scenario/S026/target
+original_commits:
+- '@S026.t1'
+derived_commits:
+- '@S026.t2'
+change_relationships:
+- a: '@S026.t1'
+  b: '@S026.t2'
+  relation: unrelated
+files:
+- aggkit/rules.py
+- tests/test_rules.py
+regions:
+- file: aggkit/rules.py
+  function: rate_limit_rps
+testing_evidence: t1 PASSED; source changed again in t2, which has no record
+deployment_evidence: none
+metadata_availability: full
+known_uncertainty: none
+expected_warnings:
+- tested code was modified afterwards
+safe_resolution_constraints: []
+human_review_required: false
+assertions:
+- type: tree_differs
+  a: '@S026.t1'
+  b: '@S026.t2'
+  file: aggkit/rules.py
+- type: note
+  ref: ci
+  commit: '@S026.t2'
+  expect: absent
+id: '26'
+sub_entries: []
+patch_ids:
+  '@S026.t1': 9515763581e1b1152fc3d10f7a53d200a3bc4625
+  '@S026.t2': df4ea97de58da1abaae902a834e76ff6dc24a266

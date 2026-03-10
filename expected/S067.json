@@ -1,0 +1,89 @@
+{
+  "scenario_id": "S067",
+  "repo_id": "testing-4",
+  "title": "Change, revert, and revert of the revert",
+  "difficulty": 2,
+  "primary_catalog_id": 67,
+  "catalog_ids": [
+    67
+  ],
+  "expected_git_outcome": "EVIDENCE_ONLY",
+  "merge_pair": {
+    "base": "scenario/S067/base",
+    "target": "scenario/S067/target",
+    "all_pairs": [
+      [
+        "scenario/S067/base",
+        "scenario/S067/target"
+      ]
+    ],
+    "additional_sides": {}
+  },
+  "fork_commit": "91677e32e7a8fa5d8b06c3e9a353706644125ee8",
+  "expected_conflicted_files": [],
+  "validation_method": "merge",
+  "clone_profile": "full",
+  "branches": [
+    "scenario/S067/base",
+    "scenario/S067/target"
+  ],
+  "original_commits": [
+    "6bc500e55e37c06dc46df4509623067f4ab8c157"
+  ],
+  "derived_commits": [
+    "6578decfa38e92ee94365708e87639fc4e558b47",
+    "758c98931b337dad25fa0b41d2648f05406da711"
+  ],
+  "change_relationships": [
+    {
+      "a": "6bc500e55e37c06dc46df4509623067f4ab8c157",
+      "b": "6578decfa38e92ee94365708e87639fc4e558b47",
+      "relation": "reverted"
+    },
+    {
+      "a": "6578decfa38e92ee94365708e87639fc4e558b47",
+      "b": "758c98931b337dad25fa0b41d2648f05406da711",
+      "relation": "reverted"
+    }
+  ],
+  "files": [
+    "aggkit/rules.py",
+    "tests/test_rules.py"
+  ],
+  "regions": [
+    {
+      "file": "aggkit/rules.py",
+      "function": "max_cardinality"
+    }
+  ],
+  "testing_evidence": "none",
+  "deployment_evidence": "none",
+  "metadata_availability": "full",
+  "known_uncertainty": "none",
+  "expected_warnings": [
+    "revert of a revert; net state equals the original change"
+  ],
+  "safe_resolution_constraints": [],
+  "human_review_required": false,
+  "assertions": [
+    {
+      "type": "tree_equal",
+      "a": "758c98931b337dad25fa0b41d2648f05406da711",
+      "b": "6bc500e55e37c06dc46df4509623067f4ab8c157",
+      "file": "aggkit/rules.py"
+    }
+  ],
+  "id": "67",
+  "sub_entries": [],
+  "patch_ids": {
+    "@S067.c1": "ea59f98fa948939a7793a61f4126b1a7ab512e98",
+    "@S067.rv1": "983d0f401aa7802592eb93a016498509f818d223",
+    "@S067.rv2": "ea59f98fa948939a7793a61f4126b1a7ab512e98"
+  },
+  "commit_labels": {
+    "S067.F": "91677e32e7a8fa5d8b06c3e9a353706644125ee8",
+    "S067.c1": "6bc500e55e37c06dc46df4509623067f4ab8c157",
+    "S067.rv1": "6578decfa38e92ee94365708e87639fc4e558b47",
+    "S067.rv2": "758c98931b337dad25fa0b41d2648f05406da711"
+  }
+}

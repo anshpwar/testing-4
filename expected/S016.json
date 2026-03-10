@@ -1,0 +1,113 @@
+{
+  "scenario_id": "S016",
+  "repo_id": "testing-4",
+  "title": "Same backport resolved differently on two release lines",
+  "difficulty": 3,
+  "primary_catalog_id": 16,
+  "catalog_ids": [
+    16
+  ],
+  "expected_git_outcome": "CONFLICT",
+  "merge_pair": {
+    "base": "scenario/S016/base",
+    "target": "scenario/S016/target",
+    "all_pairs": [
+      [
+        "scenario/S016/base",
+        "scenario/S016/target"
+      ]
+    ],
+    "additional_sides": {
+      "origin": "scenario/S016/origin"
+    }
+  },
+  "fork_commit": "91677e32e7a8fa5d8b06c3e9a353706644125ee8",
+  "expected_conflicted_files": [
+    "aggkit/rules.py",
+    "tests/test_rules.py"
+  ],
+  "validation_method": "merge",
+  "clone_profile": "full",
+  "branches": [
+    "scenario/S016/base",
+    "scenario/S016/origin",
+    "scenario/S016/target"
+  ],
+  "original_commits": [
+    "81344506bcbaf5d028df0c4d981b5021ae07dd6b"
+  ],
+  "derived_commits": [
+    "eda841a2185d449fe387ac651cfdbc39dc33da2b",
+    "8ec8c414363960c458bf406638efaee5e67a5a84"
+  ],
+  "change_relationships": [
+    {
+      "a": "81344506bcbaf5d028df0c4d981b5021ae07dd6b",
+      "b": "eda841a2185d449fe387ac651cfdbc39dc33da2b",
+      "relation": "partial"
+    },
+    {
+      "a": "81344506bcbaf5d028df0c4d981b5021ae07dd6b",
+      "b": "8ec8c414363960c458bf406638efaee5e67a5a84",
+      "relation": "partial"
+    },
+    {
+      "a": "eda841a2185d449fe387ac651cfdbc39dc33da2b",
+      "b": "8ec8c414363960c458bf406638efaee5e67a5a84",
+      "relation": "unrelated"
+    }
+  ],
+  "files": [
+    "aggkit/rules.py",
+    "tests/test_rules.py"
+  ],
+  "regions": [
+    {
+      "file": "aggkit/rules.py",
+      "function": "backfill_chunk_hours"
+    }
+  ],
+  "testing_evidence": "none",
+  "deployment_evidence": "none",
+  "metadata_availability": "full",
+  "known_uncertainty": "b1 and t1 resolutions disagree on tier values",
+  "expected_warnings": [
+    "the same backport was resolved differently on two release lines"
+  ],
+  "safe_resolution_constraints": [],
+  "human_review_required": true,
+  "assertions": [
+    {
+      "type": "trailer",
+      "commit": "eda841a2185d449fe387ac651cfdbc39dc33da2b",
+      "expect": "valid",
+      "origin": "81344506bcbaf5d028df0c4d981b5021ae07dd6b"
+    },
+    {
+      "type": "trailer",
+      "commit": "8ec8c414363960c458bf406638efaee5e67a5a84",
+      "expect": "valid",
+      "origin": "81344506bcbaf5d028df0c4d981b5021ae07dd6b"
+    },
+    {
+      "type": "patch_id_differs",
+      "a": "eda841a2185d449fe387ac651cfdbc39dc33da2b",
+      "b": "8ec8c414363960c458bf406638efaee5e67a5a84"
+    }
+  ],
+  "id": "16",
+  "sub_entries": [],
+  "patch_ids": {
+    "@S016.o1": "5f2e70384f0ec9f13293655be7632ece5fb25ea7",
+    "@S016.b1": "e8890548c932786ab36b8706af2a767a7863879b",
+    "@S016.t1": "76879abd35d4ca9fcc20419e43914b49b7f9b5c5"
+  },
+  "commit_labels": {
+    "S016.F": "91677e32e7a8fa5d8b06c3e9a353706644125ee8",
+    "S016.b0": "4851105603ee602a3ebf07959431143bfc129c41",
+    "S016.b1": "eda841a2185d449fe387ac651cfdbc39dc33da2b",
+    "S016.o1": "81344506bcbaf5d028df0c4d981b5021ae07dd6b",
+    "S016.t0": "777cbdf6540512cff41e23b24c143f6f0c9f92f0",
+    "S016.t1": "8ec8c414363960c458bf406638efaee5e67a5a84"
+  }
+}

@@ -1,0 +1,352 @@
+{
+  "scenario_id": "S089",
+  "repo_id": "testing-4",
+  "title": "Convincing but incomplete test evidence",
+  "difficulty": 5,
+  "primary_catalog_id": 89,
+  "catalog_ids": [
+    89,
+    24,
+    34,
+    32,
+    35,
+    44
+  ],
+  "expected_git_outcome": "CONFLICT",
+  "merge_pair": {
+    "base": "scenario/S089/base",
+    "target": "scenario/S089/target",
+    "all_pairs": [
+      [
+        "scenario/S089/base",
+        "scenario/S089/target"
+      ]
+    ],
+    "additional_sides": {}
+  },
+  "fork_commit": "91677e32e7a8fa5d8b06c3e9a353706644125ee8",
+  "expected_conflicted_files": [
+    "aggkit/rules.py",
+    "tests/test_rules.py"
+  ],
+  "validation_method": "merge",
+  "clone_profile": "full",
+  "branches": [
+    "scenario/S089/base",
+    "scenario/S089/target"
+  ],
+  "original_commits": [
+    "45847b2acad24e02a853dd35263bba0483af0348"
+  ],
+  "derived_commits": [
+    "9e827c871b999849efd537d1f87f024ddc15ed89"
+  ],
+  "change_relationships": [
+    {
+      "a": "45847b2acad24e02a853dd35263bba0483af0348",
+      "b": "9e827c871b999849efd537d1f87f024ddc15ed89",
+      "relation": "unrelated"
+    }
+  ],
+  "files": [
+    "aggkit/rules.py",
+    "tests/test_rules.py"
+  ],
+  "regions": [
+    {
+      "file": "aggkit/rules.py",
+      "function": "webhook_timeout_s"
+    }
+  ],
+  "testing_evidence": "t1 PASSED env prod but suite=smoke covers 3 of 214 cases",
+  "deployment_evidence": "none",
+  "metadata_availability": "full",
+  "known_uncertainty": "evidence reachable only if the profile allows it",
+  "expected_warnings": [
+    "record looks conclusive but covers 1.4% of the suite"
+  ],
+  "safe_resolution_constraints": [],
+  "human_review_required": true,
+  "assertions": [
+    {
+      "type": "note",
+      "ref": "ci",
+      "commit": "45847b2acad24e02a853dd35263bba0483af0348",
+      "expect": "present",
+      "fields": {
+        "suite": "smoke",
+        "cases_run": 3,
+        "cases_total": 214
+      }
+    }
+  ],
+  "id": "89",
+  "sub_entries": [
+    {
+      "original_commits": [
+        "c7145515633e76eaef9e5235b9c55325563b5e8e"
+      ],
+      "derived_commits": [
+        "9514ffedcfa7f6304c3283584d293608f0124f02"
+      ],
+      "change_relationships": [
+        {
+          "a": "9514ffedcfa7f6304c3283584d293608f0124f02",
+          "b": "c7145515633e76eaef9e5235b9c55325563b5e8e",
+          "relation": "unrelated"
+        }
+      ],
+      "files": [
+        "aggkit/rules.py",
+        "tests/test_rules.py"
+      ],
+      "regions": [
+        {
+          "file": "aggkit/rules.py",
+          "function": "sample_rate_bp"
+        }
+      ],
+      "testing_evidence": "b2: unit PASSED, integration FAILED (record status FAILED with suite_results)",
+      "deployment_evidence": "none",
+      "metadata_availability": "full",
+      "known_uncertainty": "none",
+      "expected_warnings": [
+        "unit suite alone is not sufficient evidence"
+      ],
+      "safe_resolution_constraints": [],
+      "human_review_required": false,
+      "assertions": [
+        {
+          "type": "real_tests",
+          "commit": "c7145515633e76eaef9e5235b9c55325563b5e8e",
+          "suite": "unit",
+          "expect": "passed"
+        },
+        {
+          "type": "real_tests",
+          "commit": "c7145515633e76eaef9e5235b9c55325563b5e8e",
+          "suite": "integration",
+          "expect": "failed"
+        }
+      ],
+      "id": "89.a",
+      "catalog_id": 24
+    },
+    {
+      "original_commits": [
+        "1920da0f6608240550df4315140752a44a21b9f3"
+      ],
+      "derived_commits": [
+        "2e32a621cbb9d316e4ca62c8bc667b84ae4838ca"
+      ],
+      "change_relationships": [
+        {
+          "a": "1920da0f6608240550df4315140752a44a21b9f3",
+          "b": "2e32a621cbb9d316e4ca62c8bc667b84ae4838ca",
+          "relation": "unrelated"
+        }
+      ],
+      "files": [
+        "aggkit/rules.py",
+        "tests/test_rules.py"
+      ],
+      "regions": [
+        {
+          "file": "aggkit/rules.py",
+          "function": "batch_size_for_rate"
+        }
+      ],
+      "testing_evidence": "t1 FLAKY: 3 of 5 runs passed (synthetic record)",
+      "deployment_evidence": "none",
+      "metadata_availability": "full",
+      "known_uncertainty": "none",
+      "expected_warnings": [
+        "flaky evidence cannot establish a pass"
+      ],
+      "safe_resolution_constraints": [],
+      "human_review_required": false,
+      "assertions": [
+        {
+          "type": "note",
+          "ref": "ci",
+          "commit": "1920da0f6608240550df4315140752a44a21b9f3",
+          "expect": "present",
+          "fields": {
+            "status": "FLAKY"
+          }
+        }
+      ],
+      "id": "89.b",
+      "catalog_id": 34
+    },
+    {
+      "original_commits": [
+        "581136acbd8102c800ca6fcd59262f427a08eb50"
+      ],
+      "derived_commits": [
+        "211bf9bd2a52d85d80fb711b3e403971ba7254c6",
+        "0f274cd687f53703e232a404333d2eafc967b212",
+        "8e2e5dbc4917de3d00ae07d811036065803c3af7"
+      ],
+      "change_relationships": [
+        {
+          "a": "581136acbd8102c800ca6fcd59262f427a08eb50",
+          "b": "8e2e5dbc4917de3d00ae07d811036065803c3af7",
+          "relation": "unrelated"
+        }
+      ],
+      "files": [
+        "aggkit/rules.py",
+        "tests/test_rules.py"
+      ],
+      "regions": [
+        {
+          "file": "aggkit/rules.py",
+          "function": "ingest_retry_delay_s"
+        }
+      ],
+      "testing_evidence": "t1 PASSED in January 2025; three commits changed the rules since",
+      "deployment_evidence": "none",
+      "metadata_availability": "full",
+      "known_uncertainty": "none",
+      "expected_warnings": [
+        "evidence predates later code changes"
+      ],
+      "safe_resolution_constraints": [],
+      "human_review_required": false,
+      "assertions": [
+        {
+          "type": "ancestor",
+          "a": "581136acbd8102c800ca6fcd59262f427a08eb50",
+          "b": "8e2e5dbc4917de3d00ae07d811036065803c3af7",
+          "expect": true
+        },
+        {
+          "type": "note",
+          "ref": "ci",
+          "commit": "581136acbd8102c800ca6fcd59262f427a08eb50",
+          "expect": "present",
+          "fields": {
+            "finished_at": "2025-01-06T09:05:00+0000"
+          }
+        }
+      ],
+      "id": "89.c",
+      "catalog_id": 32
+    },
+    {
+      "original_commits": [
+        "dc74ba19f9fef656282698dbf309115d09a9824c"
+      ],
+      "derived_commits": [
+        "9d96dbc9a96ef752ed6d28146344e59f6c637807"
+      ],
+      "change_relationships": [
+        {
+          "a": "dc74ba19f9fef656282698dbf309115d09a9824c",
+          "b": "9d96dbc9a96ef752ed6d28146344e59f6c637807",
+          "relation": "partial"
+        }
+      ],
+      "files": [
+        "aggkit/rules.py",
+        "tests/test_rules.py"
+      ],
+      "regions": [
+        {
+          "file": "aggkit/rules.py",
+          "function": "max_cardinality"
+        }
+      ],
+      "testing_evidence": "parent p PASSED; child t1 never tested and changes the same rule",
+      "deployment_evidence": "none",
+      "metadata_availability": "full",
+      "known_uncertainty": "none",
+      "expected_warnings": [
+        "ancestor evidence does not cover the modified code"
+      ],
+      "safe_resolution_constraints": [],
+      "human_review_required": false,
+      "assertions": [
+        {
+          "type": "note",
+          "ref": "ci",
+          "commit": "9d96dbc9a96ef752ed6d28146344e59f6c637807",
+          "expect": "absent"
+        },
+        {
+          "type": "ancestor",
+          "a": "dc74ba19f9fef656282698dbf309115d09a9824c",
+          "b": "9d96dbc9a96ef752ed6d28146344e59f6c637807",
+          "expect": true
+        }
+      ],
+      "id": "89.d",
+      "catalog_id": 35
+    },
+    {
+      "original_commits": [],
+      "derived_commits": [],
+      "change_relationships": [],
+      "files": [],
+      "regions": [],
+      "testing_evidence": "none",
+      "deployment_evidence": "none",
+      "metadata_availability": "only refs/notes/ci present",
+      "known_uncertainty": "evidence reachable only if the profile allows it",
+      "expected_warnings": [
+        "clone profile partial-notes: only refs/notes/ci present"
+      ],
+      "safe_resolution_constraints": [],
+      "human_review_required": false,
+      "assertions": [
+        {
+          "type": "profile_effect",
+          "profile": "partial-notes"
+        }
+      ],
+      "id": "89.e",
+      "catalog_id": 44,
+      "clone_profile": {
+        "name": "partial-notes",
+        "keep_notes": [
+          "ci"
+        ],
+        "effect": "only refs/notes/ci present"
+      },
+      "underlying": []
+    }
+  ],
+  "patch_ids": {
+    "@S089.t1": "2be3330cec830e29a3900b2bed89c98ba8af6b58",
+    "@S089.b1": "9e4e885a1c831f8dde937c575ece5127e3044401",
+    "@S089.c24_b2": "bc191ac42e9dc360e72a315885300176942f4e5c",
+    "@S089.c24_b1": "ba99d0ca9ed60bdef80cd5eb8b2de9e7642d5bb7",
+    "@S089.c34_t1": "56c1107d16cdc2dfb677f2d5110f2099bdb96ef8",
+    "@S089.c34_b1": "d05b291753a066665b7b3030567d2d77343ef953",
+    "@S089.c32_t1": "3c19ed40ff59696cd330e742e3d271072be03257",
+    "@S089.c32_t2": "69468153f8f26b5511da659bcc8bc3a12d2bdc92",
+    "@S089.c32_t3": "3d8a8c03f30e4f9c8bf68dbf8655a972e8973264",
+    "@S089.c32_t4": "618b0e41608f2a9eb8d979bf31a71b376a542f87",
+    "@S089.c35_p": "e9be2c8c76aee869c93e2bc8e7248f87dc04bd37",
+    "@S089.c35_t1": "af39b627f82fa71968f9ea3eebf4a8532f1cecc6"
+  },
+  "commit_labels": {
+    "S089.F": "91677e32e7a8fa5d8b06c3e9a353706644125ee8",
+    "S089.b1": "9e827c871b999849efd537d1f87f024ddc15ed89",
+    "S089.c24_b1": "9514ffedcfa7f6304c3283584d293608f0124f02",
+    "S089.c24_b2": "c7145515633e76eaef9e5235b9c55325563b5e8e",
+    "S089.c24_t1": "a96badfe86253891762ef515457766d0f9d59998",
+    "S089.c32_b1": "8b4600345fffcf0e4da7fa93d5957e08ae84be2e",
+    "S089.c32_t1": "581136acbd8102c800ca6fcd59262f427a08eb50",
+    "S089.c32_t2": "211bf9bd2a52d85d80fb711b3e403971ba7254c6",
+    "S089.c32_t3": "0f274cd687f53703e232a404333d2eafc967b212",
+    "S089.c32_t4": "8e2e5dbc4917de3d00ae07d811036065803c3af7",
+    "S089.c34_b1": "2e32a621cbb9d316e4ca62c8bc667b84ae4838ca",
+    "S089.c34_t1": "1920da0f6608240550df4315140752a44a21b9f3",
+    "S089.c35_b1": "b07bc657f9680cf33a4abcdec519d4cef88be512",
+    "S089.c35_p": "dc74ba19f9fef656282698dbf309115d09a9824c",
+    "S089.c35_t1": "9d96dbc9a96ef752ed6d28146344e59f6c637807",
+    "S089.t1": "45847b2acad24e02a853dd35263bba0483af0348"
+  }
+}

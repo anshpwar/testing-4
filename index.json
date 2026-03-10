@@ -1,0 +1,104 @@
+[
+  {
+    "scenario_id": "S005",
+    "catalog_ids": [
+      5
+    ],
+    "difficulty": 2,
+    "expected_git_outcome": "CONFLICT",
+    "title": "One commit carrying three independent schedule changes"
+  },
+  {
+    "scenario_id": "S044",
+    "catalog_ids": [
+      44
+    ],
+    "difficulty": 2,
+    "expected_git_outcome": "CONFLICT",
+    "title": "Evidence available only from one notes ref"
+  },
+  {
+    "scenario_id": "S067",
+    "catalog_ids": [
+      67
+    ],
+    "difficulty": 2,
+    "expected_git_outcome": "EVIDENCE_ONLY",
+    "title": "Change, revert, and revert of the revert"
+  },
+  {
+    "scenario_id": "S016",
+    "catalog_ids": [
+      16
+    ],
+    "difficulty": 3,
+    "expected_git_outcome": "CONFLICT",
+    "title": "Same backport resolved differently on two release lines"
+  },
+  {
+    "scenario_id": "S026",
+    "catalog_ids": [
+      26
+    ],
+    "difficulty": 3,
+    "expected_git_outcome": "CONFLICT",
+    "title": "Source changed after its test record"
+  },
+  {
+    "scenario_id": "S034",
+    "catalog_ids": [
+      34
+    ],
+    "difficulty": 3,
+    "expected_git_outcome": "CONFLICT",
+    "title": "Flaky test record on one side"
+  },
+  {
+    "scenario_id": "S053",
+    "catalog_ids": [
+      53
+    ],
+    "difficulty": 3,
+    "expected_git_outcome": "CONFLICT",
+    "title": "Interactive rebase of a feature line"
+  },
+  {
+    "scenario_id": "S080",
+    "catalog_ids": [
+      80,
+      75,
+      83
+    ],
+    "difficulty": 4,
+    "expected_git_outcome": "CLEAN_BUT_BROKEN",
+    "title": "Vendored dependency upgrade and a new caller of the old API"
+  },
+  {
+    "scenario_id": "S070",
+    "catalog_ids": [
+      70,
+      82,
+      98,
+      91,
+      8,
+      69
+    ],
+    "difficulty": 5,
+    "expected_git_outcome": "CONFLICT",
+    "title": "Rename plus new term across rules, calc and tests"
+  },
+  {
+    "scenario_id": "S089",
+    "catalog_ids": [
+      89,
+      24,
+      34,
+      32,
+      35,
+      44
+    ],
+    "difficulty": 5,
+    "expected_git_outcome": "CONFLICT",
+    "title": "Convincing but incomplete test evidence"
+  }
+]
