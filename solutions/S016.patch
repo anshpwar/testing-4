@@ -1,0 +1,49 @@
+diff --git a/aggkit/rules.py b/aggkit/rules.py
+index 2f9873f..d163c05 100644
+--- a/aggkit/rules.py
++++ b/aggkit/rules.py
+@@ -123,13 +123,10 @@ def dashboard_refresh_s(widgets):
+ 
+ def backfill_chunk_hours(events_per_day):
+     """Hours of data per backfill chunk, by daily event volume."""
+-    if events_per_day <= 100000:
+-        return 49
+-    if events_per_day <= 10000000:
+-        return 13
+-    if events_per_day <= 1000000000:
+-        return 5
+-    return 3
++    for bound, value in ((100000, 26), (10000000, 7), (1000000000, 3),):
++        if events_per_day <= bound:
++            return value
++    return 2
+ 
+ 
+ def hot_storage_days(events_per_day):
+diff --git a/tests/test_rules.py b/tests/test_rules.py
+index 972765f..f329fdf 100644
+--- a/tests/test_rules.py
++++ b/tests/test_rules.py
+@@ -104,14 +104,14 @@ class RuleTests(unittest.TestCase):
+         self.assertEqual(rules.dashboard_refresh_s(41), 120)
+ 
+     def test_backfill_chunk_hours(self):
+-        self.assertEqual(rules.backfill_chunk_hours(0), 49)
+-        self.assertEqual(rules.backfill_chunk_hours(1), 49)
+-        self.assertEqual(rules.backfill_chunk_hours(100000), 49)
+-        self.assertEqual(rules.backfill_chunk_hours(100001), 13)
+-        self.assertEqual(rules.backfill_chunk_hours(10000000), 13)
+-        self.assertEqual(rules.backfill_chunk_hours(10000001), 5)
+-        self.assertEqual(rules.backfill_chunk_hours(1000000000), 5)
+-        self.assertEqual(rules.backfill_chunk_hours(1000000001), 3)
++        self.assertEqual(rules.backfill_chunk_hours(0), 26)
++        self.assertEqual(rules.backfill_chunk_hours(1), 26)
++        self.assertEqual(rules.backfill_chunk_hours(100000), 26)
++        self.assertEqual(rules.backfill_chunk_hours(100001), 7)
++        self.assertEqual(rules.backfill_chunk_hours(10000000), 7)
++        self.assertEqual(rules.backfill_chunk_hours(10000001), 3)
++        self.assertEqual(rules.backfill_chunk_hours(1000000000), 3)
++        self.assertEqual(rules.backfill_chunk_hours(1000000001), 2)
+ 
+     def test_hot_storage_days(self):
+         self.assertEqual(rules.hot_storage_days(0), 3)

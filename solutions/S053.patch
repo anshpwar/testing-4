@@ -1,0 +1,85 @@
+diff --git a/aggkit/rules.py b/aggkit/rules.py
+index f8075b1..6edeb31 100644
+--- a/aggkit/rules.py
++++ b/aggkit/rules.py
+@@ -68,24 +68,24 @@ def alert_cooldown_s(severity):
+ 
+ def anomaly_zscore_x100(window_points):
+     """Z-score (x100) beyond which a point is anomalous, by window size."""
+-    if window_points <= 10:
+-        return 307
+-    if window_points <= 50:
+-        return 263
+-    if window_points <= 200:
+-        return 219
+-    return 175
++    if window_points <= 11:
++        return 350
++    if window_points <= 55:
++        return 300
++    if window_points <= 220:
++        return 250
++    return 200
+ 
+ 
+ def histogram_buckets(range_width):
+     """Histogram bucket count for a value range width."""
+     if range_width <= 10:
+-        return 6
++        return 5
+     if range_width <= 100:
+-        return 22
++        return 20
+     if range_width <= 1000:
+-        return 44
+-    return 66
++        return 40
++    return 60
+ 
+ 
+ def max_cardinality(plan_tier):
+diff --git a/tests/test_rules.py b/tests/test_rules.py
+index 9be6a76..47ce0aa 100644
+--- a/tests/test_rules.py
++++ b/tests/test_rules.py
+@@ -58,24 +58,24 @@ class RuleTests(unittest.TestCase):
+         self.assertEqual(rules.alert_cooldown_s(4), 30)
+ 
+     def test_anomaly_zscore_x100(self):
+-        self.assertEqual(rules.anomaly_zscore_x100(0), 307)
+-        self.assertEqual(rules.anomaly_zscore_x100(1), 307)
+-        self.assertEqual(rules.anomaly_zscore_x100(10), 307)
+-        self.assertEqual(rules.anomaly_zscore_x100(11), 263)
+-        self.assertEqual(rules.anomaly_zscore_x100(50), 263)
+-        self.assertEqual(rules.anomaly_zscore_x100(51), 219)
+-        self.assertEqual(rules.anomaly_zscore_x100(200), 219)
+-        self.assertEqual(rules.anomaly_zscore_x100(201), 175)
++        self.assertEqual(rules.anomaly_zscore_x100(0), 350)
++        self.assertEqual(rules.anomaly_zscore_x100(1), 350)
++        self.assertEqual(rules.anomaly_zscore_x100(10), 350)
++        self.assertEqual(rules.anomaly_zscore_x100(11), 350)
++        self.assertEqual(rules.anomaly_zscore_x100(50), 300)
++        self.assertEqual(rules.anomaly_zscore_x100(51), 300)
++        self.assertEqual(rules.anomaly_zscore_x100(200), 250)
++        self.assertEqual(rules.anomaly_zscore_x100(201), 250)
+ 
+     def test_histogram_buckets(self):
+-        self.assertEqual(rules.histogram_buckets(0), 6)
+-        self.assertEqual(rules.histogram_buckets(1), 6)
+-        self.assertEqual(rules.histogram_buckets(10), 6)
+-        self.assertEqual(rules.histogram_buckets(11), 22)
+-        self.assertEqual(rules.histogram_buckets(100), 22)
+-        self.assertEqual(rules.histogram_buckets(101), 44)
+-        self.assertEqual(rules.histogram_buckets(1000), 44)
+-        self.assertEqual(rules.histogram_buckets(1001), 66)
++        self.assertEqual(rules.histogram_buckets(0), 5)
++        self.assertEqual(rules.histogram_buckets(1), 5)
++        self.assertEqual(rules.histogram_buckets(10), 5)
++        self.assertEqual(rules.histogram_buckets(11), 20)
++        self.assertEqual(rules.histogram_buckets(100), 20)
++        self.assertEqual(rules.histogram_buckets(101), 40)
++        self.assertEqual(rules.histogram_buckets(1000), 40)
++        self.assertEqual(rules.histogram_buckets(1001), 60)
+ 
+     def test_max_cardinality(self):
+         self.assertEqual(rules.max_cardinality(0), 100)

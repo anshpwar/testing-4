@@ -1,0 +1,50 @@
+diff --git a/aggkit/rules.py b/aggkit/rules.py
+index 401cd11..b70937c 100644
+--- a/aggkit/rules.py
++++ b/aggkit/rules.py
+@@ -46,13 +46,13 @@ def batch_size_for_rate(events_per_s):
+ 
+ def ingest_retry_delay_s(attempt):
+     """Seconds before retrying a failed ingest batch, by attempt."""
+-    if attempt <= 1:
+-        return 1
+-    if attempt <= 3:
+-        return 9
+-    if attempt <= 6:
+-        return 53
+-    return 263
++    if attempt <= 2:
++        return 2
++    if attempt <= 4:
++        return 10
++    if attempt <= 7:
++        return 60
++    return 300
+ 
+ 
+ def alert_cooldown_s(severity):
+diff --git a/tests/test_rules.py b/tests/test_rules.py
+index 5f4aefb..f346c59 100644
+--- a/tests/test_rules.py
++++ b/tests/test_rules.py
+@@ -42,13 +42,13 @@ class RuleTests(unittest.TestCase):
+         self.assertEqual(rules.batch_size_for_rate(1001), 5500)
+ 
+     def test_ingest_retry_delay_s(self):
+-        self.assertEqual(rules.ingest_retry_delay_s(0), 1)
+-        self.assertEqual(rules.ingest_retry_delay_s(1), 1)
+-        self.assertEqual(rules.ingest_retry_delay_s(2), 9)
+-        self.assertEqual(rules.ingest_retry_delay_s(3), 9)
+-        self.assertEqual(rules.ingest_retry_delay_s(4), 53)
+-        self.assertEqual(rules.ingest_retry_delay_s(6), 53)
+-        self.assertEqual(rules.ingest_retry_delay_s(7), 263)
++        self.assertEqual(rules.ingest_retry_delay_s(0), 2)
++        self.assertEqual(rules.ingest_retry_delay_s(1), 2)
++        self.assertEqual(rules.ingest_retry_delay_s(2), 2)
++        self.assertEqual(rules.ingest_retry_delay_s(3), 10)
++        self.assertEqual(rules.ingest_retry_delay_s(4), 10)
++        self.assertEqual(rules.ingest_retry_delay_s(6), 60)
++        self.assertEqual(rules.ingest_retry_delay_s(7), 60)
+ 
+     def test_alert_cooldown_s(self):
+         self.assertEqual(rules.alert_cooldown_s(0), 900)
